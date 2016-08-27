@@ -4,11 +4,9 @@
 - ES6/JSX 
 - electron
 - react
-- react-router
 - webpack
 
 ![screenshot]
-
 
 ## Dev
 
@@ -33,7 +31,7 @@ $ npm run build-win  # win(32, 64)
 
 ## License
 
-MIT © react-photonkit
+MIT © polite.li
 
 
 
