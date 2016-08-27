@@ -23,12 +23,12 @@ function onClosed() {
 function createMainWindow() {
 	const is2nd = process.argv.indexOf('--2nd') >= 0;
 	var opts = {
-		width: 1200,
-		height: 600,
+		width: 500, //250, 
+		height: 500, 
 		'accept-first-mouse': true,
-		'title-bar-style': 'hidden'
+		'title-bar-style': 'hidden' 
 	};
-  if (is2nd) {
+  if (is2nd) { 
     setOptsForDualScreen(opts);
   }
 

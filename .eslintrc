@@ -1,0 +1,11 @@
+{
+  "rules": {
+    "prefer-template": 0
+  },
+  "plugins": ["react"],
+
+  "ecmaFeatures": {
+    "jsx": true,
+    "modules": true
+  }
+}

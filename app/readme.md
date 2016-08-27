@@ -1,11 +1,7 @@
-# epp
-
-<img src='assets/epp.png' width=256 />
-
-Electron aPPlication
+# polite.li 
 
 - photon
-- coffeescrirpt (cjsx)
+- ES6/JSX 
 - electron
 - react
 - react-router
