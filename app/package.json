@@ -31,12 +31,15 @@
   "dependencies": {
     "babel-plugin-transform-object-rest-spread": "^6.8.0",
     "electron-debug": "^0.2.1",
+    "electron-json-storage": "^2.0.0",
     "history": "^1.12.3",
     "object-assign": "^4.0.1",
     "react": "^0.14.1",
     "react-dom": "^0.14.1",
+    "react-electron-webview": "^1.0.7",
     "react-photonkit": "^0.3.2",
-    "react-select": "^0.9.1"
+    "react-select": "^0.9.1",
+    "url-parse": "^1.1.3"
   },
   "devDependencies": {
     "babel-core": "^6.4.0",

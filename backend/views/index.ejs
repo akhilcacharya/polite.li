@@ -1,0 +1,50 @@
+<html>
+  <head>
+    <style>
+      body {
+        font-family: "Helvetica Neue", Helvetica, Arial, sans-serif;
+        color: white; 
+        background-color: #607D8B; 
+      }
+
+      .header {
+        display: flex; 
+        align-items: center; 
+        justify-content: center; 
+      }
+
+      .button-area {
+        margin: 10px auto;
+        display: flex;
+        flex-direction: row;
+        justify-content: space-between;
+        flex-wrap: wrap;
+        max-width: 320px;
+      }
+
+        a {
+          width: 120px; 
+          background: #FFFAE8;
+          padding: 1em 2.4em;
+          font-size: .9em;
+          margin: 1em;
+          color: #607D8B;
+          text-decoration: none;
+          flex-grow: 1;
+          text-align: center;
+        }
+
+    </style>
+  </head>
+  <body>
+    <div class="header">
+        <h1> Login to Polite.li </h1>
+    </div>
+
+    <div class="button-area">
+      <a class="button" href="https://github.com/login/oauth/authorize?scope=user:email&client_id=<%= client_id %>">Login</a>
+    </div>
+
+
+  </body>
+</html>

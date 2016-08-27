@@ -12,19 +12,17 @@ export default class PoliteBarPane extends React.Component {
     
     constructor(props){
         super(props); 
-        this.url = props.url; 
         this.auth = props.auth; 
-        if(Object.keys(props.state).length == 0){
-            this.state = {
-                selected: {
-                    value: '', 
-                    custom: '', 
-                }, 
-            };  
-        }else{
-            this.state = {...props.state}; 
-        }
-
+        this.syncURL = props.syncURL; 
+        this.fetchURL = props.fetchURL + "?token=" + this.auth; 
+        
+        this.state = {
+            selected: {
+                value: '', 
+                custom: '', 
+            }, 
+        };  
+    
         this.CONSTANTS = {
             FREE: 'FREE', 
             BUSY: 'BUSY', 
@@ -34,13 +32,28 @@ export default class PoliteBarPane extends React.Component {
         }
 
         this.onChange = this.onChange.bind(this); 
+        this.onBlurred = this.onBlurred.bind(this); 
         this.syncState = this.syncState.bind(this); 
+    }
+
+    componentDidMount(){
+        fetch(this.fetchURL, {
+            method: 'get',
+            mode: 'cors', 
+        }).then((res) => res.json()).then((data) => {
+            this.setState({
+                selected: {
+                    ...data.user.state, 
+                } 
+            });   
+        }); 
     }
 
     onChange(value){
         this.setState({
             selected: {
-                value: value,  
+                value: value,
+                custom: '',   
             }, 
         }, () => {
             if(this.state.selected.value == this.CONSTANTS.CUSTOM) return;
@@ -48,12 +61,32 @@ export default class PoliteBarPane extends React.Component {
         }); 
     }
 
+    onBlurred(evt){
+        const custom = evt.target.value;
+        const state = this.state; 
+        this.setState({
+            selected: {
+                value: state.selected.value, 
+                custom: custom, 
+            },  
+          }, () => {
+            this.syncState()
+        }); 
+    }
+
     syncState(){
-        fetch(this.url, {
+        const auth = this.auth; 
+        const state = this.state; 
+
+        fetch(this.syncURL, {
             method: 'post', 
+            headers: {
+                 "Content-type": "application/json; charset=UTF-8"              
+            }, 
+            mode: 'cors', 
             body: JSON.stringify({
-                auth: this.auth, 
-                state: this.state
+                auth: auth, 
+                state: state
             }), 
         }); 
     }
@@ -85,7 +118,7 @@ export default class PoliteBarPane extends React.Component {
 
         const customInput = (
                 <div className="input-group">
-                    <input onBlur={this.syncState} placeholder="Custom Status" type="text" className="form-control"/>
+                    <input defaultValue={this.state.selected.custom} onBlur={this.onBlurred} placeholder="Custom Status" type="text" className="form-control"/>
                 </div>
         ); 
 

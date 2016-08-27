@@ -1,0 +1,8 @@
+{
+  "username": "",
+  "password": "",
+  "path": "mongodb://",
+  "endpoint": "@", 
+  "gh_client_id": "", 
+  "gh_client_secret": ""
+}

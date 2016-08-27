@@ -5,30 +5,48 @@ import { Pane } from "react-photonkit";
 require('../index.scss');
 
 export default class FriendPane extends React.Component {
-    constructor(){
-        super(); 
+    constructor(props){
+        super(props); 
         //Get friends from REST API
         //Filter from the search box
+        this.auth = props.auth; 
+        this.url = props.friendURL; 
+        this.url += '?token=' + this.auth; 
+        
+        this.state = {
+            users: [], 
+        };
+
+        this.CONSTANTS = {
+            'FREE': '😀  Anytime!', 
+            'BUSY': '😓  Later. Super busy.', 
+            'EMERGENCIES': '🚒  Only for Emergencies',
+            'DND': '🚫 Do Not Disturb', 
+            'CUSTOM': '❓ Custom'
+        }; 
+
+    }
+
+    componentDidMount(){
+        fetch(this.url, {
+            method: 'get',
+            mode: 'cors', 
+        }).then((res) => res.json()).then((data) => {
+            this.setState({
+                users: data.users, 
+            });   
+        }); 
     }
 
     render(){
-
-        const users = [
-            {
-                name: "Akhil Acharya", 
-                username: "akhilcacharya", 
-                img: "https://avatars0.githubusercontent.com/u/3621384?v=3&s=460", 
-            }
-        ]; 
-
-        const groupItems = users.map((user, idx) => {
+        const groupItems = this.state.users.map((user, idx) => {
             return (
-                <div>
-                    <li className="list-group-item" key={idx}>
-                        <img className="img-circle media-object pull-left" src={user.img} width="48" height="48"/>
+                <div key={idx}>
+                    <li className="list-group-item">
+                        <img className="img-circle media-object pull-left" src={user.avatar} width="48" height="48"/>
                         <div className="media-body pull-left">
-                            <h4>{user.name}</h4>
-                            <h5>@{user.username}</h5>
+                            <h4>{user.name} | <span>@{user.username}</span></h4>
+                            <h5>{this.CONSTANTS[user.state.value]}</h5>
                         </div>
                     </li>
                 <hr/>

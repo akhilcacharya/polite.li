@@ -1,0 +1,23 @@
+{
+  "name": "polite.li-backend",
+  "version": "1.0.0",
+  "description": "",
+  "main": "app.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "author": "",
+  "license": "MIT",
+  "dependencies": {
+    "body-parser": "^1.15.2",
+    "cors": "^2.8.0",
+    "ejs": "^2.5.1",
+    "express": "^4.14.0",
+    "http": "0.0.0",
+    "mongoose": "^4.5.10",
+    "octonode": "^0.7.6",
+    "querystring": "^0.2.0",
+    "request": "^2.74.0",
+    "url-parse": "^1.1.3"
+  }
+}
