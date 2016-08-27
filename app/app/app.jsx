@@ -10,15 +10,15 @@ import FriendPane from './friends.jsx';
 
 require('../index.scss');
 
+const endpoint = "http://localhost:4000/api/sync"; 
+const auth = "testToken"; 
+
+//Fetch data from server, then render
+
 ReactDom.render(
   <Window>
-    <Content>
-      <PaneGroup>
-        <FriendPane />
-        <PoliteBarPane />
-      </PaneGroup>
-    </Content>
-    <Footer />
+      <PoliteBarPane auth={auth} url={endpoint} state={{}} />
+      <FriendPane />
   </Window>
   , 
 document.querySelector("#main"));

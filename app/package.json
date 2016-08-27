@@ -29,12 +29,14 @@
     "electron-app"
   ],
   "dependencies": {
+    "babel-plugin-transform-object-rest-spread": "^6.8.0",
     "electron-debug": "^0.2.1",
     "history": "^1.12.3",
     "object-assign": "^4.0.1",
     "react": "^0.14.1",
     "react-dom": "^0.14.1",
-    "react-photonkit": "^0.3.2"
+    "react-photonkit": "^0.3.2",
+    "react-select": "^0.9.1"
   },
   "devDependencies": {
     "babel-core": "^6.4.0",

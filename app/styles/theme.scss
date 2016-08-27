@@ -1,0 +1,20 @@
+$bgColor: #607D8B; 
+$titleHeader: #FFFAE8; 
+
+.window {
+    background-color: $bgColor; 
+    color: white; 
+}
+
+input {
+    color: $bgColor; 
+}
+
+.title-header {
+    color: $titleHeader; 
+}
+
+.list-group-item {
+    background-color: $titleHeader;  
+    color: black; 
+}
