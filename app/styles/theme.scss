@@ -1,25 +1,53 @@
-$bgColor: #607D8B; 
-$titleHeader: #FFFAE8; 
+$bgColor: #607D8B;
+$titleHeader: #FFF;
 
 .window {
-    background-color: $bgColor; 
-    color: white; 
+    background-color: $bgColor;
+    color: white;
 }
 
 input {
-    color: $bgColor; 
+    color: $bgColor;
 }
 
 .title-header {
-    color: $titleHeader; 
+    color: $titleHeader;
 }
 
 .list-group-item {
-    background-color: $titleHeader;  
-    color: black; 
+    background-color: $titleHeader;
+    color: black;
+    padding-top: 10px;
+    border-radius: 25px;
+    padding: 20px;
 }
+
+.card {
+  background: $titleHeader;
+  border-radius: 2px;
+  color: $bgColor;
+  display: inline-block;
+  height: 72px;
+  position: relative;
+  width: 330px;
+}
+
+.card-body {
+    margin-left: 10px; 
+}
+
+
+.card-1 {
+  box-shadow: 0 1px 3px rgba(0,0,0,0.12), 0 1px 2px rgba(0,0,0,0.24);
+  transition: all 0.3s cubic-bezier(.25,.8,.25,1);
+}
+
+.card-1:hover {
+  box-shadow: 0 14px 28px rgba(0,0,0,0.25), 0 10px 10px rgba(0,0,0,0.22);
+}
+
 
 webview {
     width: 445px;
-    height: 750px;  
+    height: 750px;
 }

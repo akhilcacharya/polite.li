@@ -4,14 +4,11 @@ import React from "react";
 import ReactDom from "react-dom";
 import { Pane } from "react-photonkit";
 import Select from 'react-select';
-
 import 'react-select/dist/react-select.css';
 
 require('../index.scss');
 
-
 export default class PoliteBarPane extends React.Component {
-
     constructor(props){
         super(props);
         this.auth = props.auth;
@@ -120,7 +117,11 @@ export default class PoliteBarPane extends React.Component {
 
         const customInput = (
                 <div className="input-group">
-                    <input defaultValue={this.state.selected.custom} onBlur={this.onBlurred} placeholder="Custom Status" type="text" className="form-control"/>
+                    <input defaultValue={this.state.selected.custom}
+                           onBlur={this.onBlurred}
+                           placeholder="Custom Status"
+                           type="text"
+                           className="form-control"/>
                 </div>
         );
 
@@ -130,7 +131,13 @@ export default class PoliteBarPane extends React.Component {
                    <h1 className="title-header"> Polite.li </h1>
                    <h3> Can other people interrupt? </h3>
                 </div>
-                <Select autofocus value={this.state.selected.value} noResultsText="Custom Status" onChange={this.onChange} autosize={false} searchable={true} options={options} />
+                <Select autofocus
+                        value={this.state.selected.value}
+                        noResultsText="Custom Status"
+                        onChange={this.onChange}
+                        autosize={false}
+                        searchable={true}
+                        options={options} />
                 <br/>
                 { this.state.selected.value == this.CONSTANTS.CUSTOM? customInput : ""  }
                 <br/>

@@ -70,14 +70,14 @@ export default class FriendPane extends React.Component {
         const groupItems = this.state.filteredUsers.map((user, idx) => {
             return (
                 <div key={idx}>
-                    <li className="list-group-item">
-                        <img className="img-circle media-object pull-left" src={user.avatar} width="48" height="48"/>
-                        <div className="media-body pull-left">
-                            <h4>{user.name} | <span>@{user.username}</span></h4>
-                            <h5>{this.CONSTANTS[user.state.value]}</h5>
+                    <li className="card card-1">
+                        <img className="pull-left" src={user.avatar} width="72" height="72"/>
+                        <div className="card-body pull-left">
+                            <h4><b>{user.name}</b></h4>
+                            <h5>@{user.username}</h5>
+                            <h5>{user.state.value == 'CUSTOM'? user.state.custom: this.CONSTANTS[user.state.value]}</h5>
                         </div>
                     </li>
-                <hr/>
                 </div>
             );
         });
@@ -88,7 +88,6 @@ export default class FriendPane extends React.Component {
                     <li className="list-group-header">
                         <input onChange={onType} className="form-control" type="text" placeholder="Search for someone"/>
                     </li>
-                    <hr/>
                     {groupItems}
                 </ul>
             </div>

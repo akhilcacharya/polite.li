@@ -25,10 +25,10 @@ const onFinishLoad = (evt) => {
     }
 }
 
-const App = (auth) => (
+const App = (props) => (
     <Window>
         <PoliteBarPane
-            auth={auth}
+            auth={props.auth}
             fetchURL={baseUrl + 'api/self'}
             syncURL={baseUrl + 'api/sync'}/>
         <FriendPane
@@ -37,7 +37,7 @@ const App = (auth) => (
     </Window>
 );
 
-const Login = () => (
+const Login = (props) => (
     <Window>
         <div className="window-content text-center">
           <WebView
@@ -50,7 +50,7 @@ const Login = () => (
 const auth = localStorage.getItem(tokenKey);
 
 if(auth != null){
-  ReactDOM.render(App(auth), appRoot);
+  ReactDOM.render(<App auth={auth}/>, appRoot);
 }else{
-  ReactDOM.render(Login(), appRoot);
+  ReactDOM.render(<Login />, appRoot);
 }
