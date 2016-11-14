@@ -86,7 +86,11 @@ export default class FriendPane extends React.Component {
             <div className="text-center">
                 <ul className="list-group">
                     <li className="list-group-header">
-                        <input onChange={onType} className="form-control" type="text" placeholder="Search for someone"/>
+                        <input 
+                            onChange={onType} 
+                            className="form-control" 
+                            type="text" 
+                            placeholder="Search for someone"/>
                     </li>
                     {groupItems}
                 </ul>
