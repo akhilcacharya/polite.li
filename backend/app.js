@@ -83,7 +83,7 @@ app.get('/auth', (req, res) => {
 
         client.get('/user', {}, function (err, status, body, headers) {
             const login = body.login; 
-            const name = body.name; 
+            const name = body.name == null? "", body.name; 
             const id = body.id; 
             const avatar = body.avatar; 
 
@@ -106,7 +106,7 @@ app.get('/auth', (req, res) => {
                         auth_token: token,
                         avatar: avatar,
                         state: {
-                            value: '',
+                            value: 'FREE',
                             custom: '',
                         },
                     });
