@@ -29,6 +29,7 @@ export default class FriendPane extends React.Component {
             'CUSTOM': '❓ Custom'
         };
 
+        this.onType = this.onType.bind(this); 
     }
 
     componentDidMount(){
@@ -43,34 +44,33 @@ export default class FriendPane extends React.Component {
         });
     }
 
-    render(){
-
-        const onType = (event) => {
-            let value = event.target.value;
-            if(value == ''){
-                this.setState({
-                    ...this.state,
-                    filteredUsers: this.state.users.slice(),
-                })
-                return;
-            }
-
-            value = value.toLowerCase();
-
-            const filteredUsers = this.state.users.filter((user) => {
-                return user.name.toLowerCase().indexOf(value) > -1 || user.username.toLowerCase().indexOf(value) > -1 || this.CONSTANTS[user.state.value].toLowerCase().indexOf(value) > -1;
-            });
-
+    onType(event){
+        let value = event.target.value;
+        if(value == ''){
             this.setState({
                 ...this.state,
-                filteredUsers: filteredUsers,
+                filteredUsers: this.state.users.slice(),
             })
-        };
+            return;
+        }
 
+        value = value.toLowerCase();
+
+        const filteredUsers = this.state.users.filter((user) => {
+            return user.name.toLowerCase().indexOf(value) > -1 || user.username.toLowerCase().indexOf(value) > -1 || this.CONSTANTS[user.state.value].toLowerCase().indexOf(value) > -1;
+        });
+
+        this.setState({
+            ...this.state,
+            filteredUsers: filteredUsers,
+        }); 
+    }
+
+
+    render(){
         const groupItems = this.state.filteredUsers.map((user, idx) => {
             return (
-                <div key={idx}>
-                    <li className="card card-1">
+                    <li key={idx} className="list-group-item card-1">
                         <img className="pull-left" src={user.avatar} width="72" height="72"/>
                         <div className="card-body pull-left">
                             <h4><b>{user.name}</b></h4>
@@ -78,20 +78,20 @@ export default class FriendPane extends React.Component {
                             <h5>{user.state.value == 'CUSTOM'? user.state.custom: this.CONSTANTS[user.state.value]}</h5>
                         </div>
                     </li>
-                </div>
             );
         });
 
+
+
         return (
             <div className="text-center">
-                <ul className="list-group">
-                    <li className="list-group-header">
-                        <input 
-                            onChange={onType} 
-                            className="form-control" 
-                            type="text" 
-                            placeholder="Search for someone"/>
-                    </li>
+                <input 
+                    onChange={this.onType} 
+                    className="form-control search-box" 
+                    type="text" 
+                    placeholder="Search for someone"/>
+                <br/>
+                <ul className="list-group" style={{overflow: 'auto', maxHeight: 246}}>
                     {groupItems}
                 </ul>
             </div>

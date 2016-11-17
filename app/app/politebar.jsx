@@ -169,6 +169,11 @@ export default class PoliteBarPane extends React.Component {
                         searchable={true}
                         options={contactOptions} />
                 { this.state.selected.value == this.CONSTANTS.CUSTOM? customInput : ""  }
+
+                <br/>
+                <br/>
+
+
             </div>
         );
     }
