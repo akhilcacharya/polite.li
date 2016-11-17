@@ -115,6 +115,25 @@ export default class PoliteBarPane extends React.Component {
             }
         ];
 
+        const contactOptions = [
+            {
+                value: 'PERSON', 
+                label: '💁 In-Person'
+            }, 
+            {
+                value: 'CELL', 
+                label: ' Cell'
+            }, 
+            {
+                value: 'SMS', 
+                label: ' Text', 
+            }, 
+            {
+                value: 'SKYPE', 
+                label: ' Skype', 
+            }, 
+        ]; 
+
         const customInput = (
                 <div className="input-group">
                     <input defaultValue={this.state.selected.custom}
@@ -131,6 +150,8 @@ export default class PoliteBarPane extends React.Component {
                    <h1 className="title-header"> Polite.li </h1>
                    <h3> Can other people interrupt? </h3>
                 </div>
+                
+                
                 <Select autofocus
                         value={this.state.selected.value}
                         noResultsText="Custom Status"
@@ -138,9 +159,21 @@ export default class PoliteBarPane extends React.Component {
                         autosize={false}
                         searchable={true}
                         options={options} />
-                <br/>
+                
+                <div className="text-center">
+                   <h3> How? </h3>
+                </div>
+
+                <Select 
+                        value={contactOptions[0]}
+                        searchable={true}
+                        options={contactOptions} />
                 { this.state.selected.value == this.CONSTANTS.CUSTOM? customInput : ""  }
+
                 <br/>
+                <br/>
+
+
             </div>
         );
     }

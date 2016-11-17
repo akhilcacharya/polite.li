@@ -1,0 +1,6 @@
+[ignore]
+.*/node_modules/.*
+./scripts/*
+index.js
+starter.js
+webpack.config.js

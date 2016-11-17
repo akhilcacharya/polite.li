@@ -1,3 +1,5 @@
 // Place your settings in this file to overwrite default and user settings.
 {
+    "javascript.validate.enable": false, 
+    "flow.path": "/Users/akhilacharya/Documents/Coding/flow/flow"
 }
