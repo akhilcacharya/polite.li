@@ -1,8 +1,8 @@
 {
-  "name": "epp",
-  "productName": "Epp",
+  "name": "politeli",
+  "productName": "Polite.li",
   "version": "0.0.0",
-  "description": "Electron Application",
+  "description": "Interrupt your friends, politely.",
   "license": "MIT",
   "repository": "react-photonkit/epp",
   "author": {

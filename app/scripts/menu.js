@@ -81,16 +81,20 @@ const template = [{
     accelerator: 'CmdOrCtrl+W',
     role: 'close'
   },
-]}, {
-  label: 'Help',
-  role: 'help',
-  submenu: [{
-    label: 'Learn More',
-    click: function() {
-      require('shell').openExternal('https://github.com/importre/epp')
-    }
-  },
-]}];
+]}, 
+
+// {
+//   label: 'Help',
+//   role: 'help',
+//   submenu: [{
+//     label: 'Learn More',
+//     click: function() {
+//       require('shell').openExternal('https://github.com/importre/epp')
+//     }
+//   },
+// ]}
+
+];
 
 var darwinMenu = [{
   label: appName,
@@ -113,7 +117,12 @@ var darwinMenu = [{
     label: 'Hide',
     accelerator: 'Esc',
     selector: 'hide:'
-  }, {
+  },
+  {
+    label: 'Logout',
+    selector: 'logout:'
+  }, 
+   {
     type: 'separator'
   }, {
     label: 'Quit',
