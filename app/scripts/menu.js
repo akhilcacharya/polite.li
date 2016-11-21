@@ -5,6 +5,7 @@ const path = require('path');
 const dialog = require('dialog');
 const NativeImage = require('native-image');
 
+
 const appName = app.getName();
 const template = [{
   label: 'Edit',
@@ -82,18 +83,6 @@ const template = [{
     role: 'close'
   },
 ]}, 
-
-// {
-//   label: 'Help',
-//   role: 'help',
-//   submenu: [{
-//     label: 'Learn More',
-//     click: function() {
-//       require('shell').openExternal('https://github.com/importre/epp')
-//     }
-//   },
-// ]}
-
 ];
 
 var darwinMenu = [{
@@ -120,7 +109,14 @@ var darwinMenu = [{
   },
   {
     label: 'Logout',
-    selector: 'logout:'
+    selector: 'logout:', 
+    click(item, focusedWindow){
+      const contents = focusedWindow.webContents; 
+      //Clear local storage token in the window
+      contents.executeJavaScript(`localStorage.clear()`); 
+      //Force reload the page to commit. 
+      contents.reload(); 
+    }
   }, 
    {
     type: 'separator'

@@ -15,13 +15,11 @@ const baseUrl = "http://localhost:3000/";
 const appRoot = document.querySelector("#main");
 const tokenKey = "authi";
 
-
 const onFinishLoad = (evt) => {
     const url = parse(evt.srcElement.src, true);
     if(url.pathname == "/received" && url.query.token){
       const token = url.query.token;
       localStorage.setItem(tokenKey, token);
-      console.log("New Token", token); 
       ReactDOM.render(<App auth={token} />, appRoot);
     }
 }
