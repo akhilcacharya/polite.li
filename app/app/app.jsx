@@ -21,7 +21,8 @@ const onFinishLoad = (evt) => {
     if(url.pathname == "/received" && url.query.token){
       const token = url.query.token;
       localStorage.setItem(tokenKey, token);
-      ReactDOM.render(App(token), appRoot);
+      console.log("New Token", token); 
+      ReactDOM.render(<App auth={token} />, appRoot);
     }
 }
 
@@ -32,7 +33,7 @@ const App = (props) => (
             fetchURL={baseUrl + 'api/self'}
             syncURL={baseUrl + 'api/sync'}/>
         <FriendPane
-            auth={auth}
+            auth={props.auth}
             friendURL={baseUrl + 'api/friends'} />
     </Window>
 );
