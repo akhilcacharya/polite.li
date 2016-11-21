@@ -92,7 +92,6 @@ export default class PoliteBarPane extends React.Component {
         });
     }
 
-
     render(){
         const options = [
             {
@@ -124,11 +123,11 @@ export default class PoliteBarPane extends React.Component {
             }, 
             {
                 value: 'CELL', 
-                label: ' Cell'
+                label: '📞 Cell'
             }, 
             {
                 value: 'SMS', 
-                label: ' Text', 
+                label: '📱 Text', 
             }, 
             {
                 value: 'SKYPE', 
@@ -161,7 +160,7 @@ export default class PoliteBarPane extends React.Component {
                         autosize={false}
                         searchable={true}
                         options={options} />
-                
+
                 <div className="text-center">
                    <h3> How? </h3>
                 </div>

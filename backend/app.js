@@ -39,6 +39,9 @@ const UserSchema = mongoose.Schema({
         value: String,
         custom: String,
     },
+    contact: {
+        value: String
+    }
 });
 
 mongoose.model("User", UserSchema);
