@@ -83,7 +83,7 @@ app.get('/auth', (req, res) => {
 
         client.get('/user', {}, function (err, status, body, headers) {
             const login = body.login; 
-            const name = body.name == null? "", body.name; 
+            const name = body.name == null? "":body.name; 
             const id = body.id; 
             const avatar = body.avatar; 
 
@@ -93,9 +93,9 @@ app.get('/auth', (req, res) => {
                 if(users.length > 0){
                     const newUser = users[0];
                     //Update the token
-                    newUser.access_token = token;
+                    newUser.auth_token = token;
                     newUser.save(() => {
-                        console.log("Already exists");
+                        console.log("Already exists, new auth token", newUser.auth_token);
                         res.redirect('/received?token=' + token);
                     });
                 } else {

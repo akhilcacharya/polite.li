@@ -23,9 +23,9 @@ function onClosed() {
 function createMainWindow() {
 	const is2nd = process.argv.indexOf('--2nd') >= 0;
 	var opts = {
-		width: 345, 
+		width: 355, 
 		height: 570, 
-		minWidth: 345, 
+		minWidth: 355, 
 		minHeight: 570, 
 		'accept-first-mouse': true,
 		'title-bar-style': 'hidden' 
@@ -37,11 +37,11 @@ function createMainWindow() {
 	const win = new BrowserWindow(opts);
 	if (process.env.DEV) {
 		win.loadUrl('http://localhost:8000/dev.html');
-		win.openDevTools();
 	} else {
 		win.loadUrl(`file://${__dirname}/index.html`);
 	}
 	win.on('closed', onClosed);
+
 
 	if (menu) {
 		Menu.setApplicationMenu(menu);
@@ -73,9 +73,15 @@ app.on('activate-with-no-open-windows', () => {
 
 app.on('ready', () => {
 	mainWindow = createMainWindow();
-
 	if (process.env.DEV) {
 		const watcher = require('./scripts/watcher.js');
 		watcher.watch(app, ['./index.js', './scripts']);
 	}
 });
+
+module.exports = {
+	getMainWindow : function(){
+		console.log("Getting window"); 
+		return mainWindow; 
+	}
+} 

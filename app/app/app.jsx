@@ -15,13 +15,12 @@ const baseUrl = "http://localhost:3000/";
 const appRoot = document.querySelector("#main");
 const tokenKey = "authi";
 
-
 const onFinishLoad = (evt) => {
     const url = parse(evt.srcElement.src, true);
     if(url.pathname == "/received" && url.query.token){
       const token = url.query.token;
       localStorage.setItem(tokenKey, token);
-      ReactDOM.render(App(token), appRoot);
+      ReactDOM.render(<App auth={token} />, appRoot);
     }
 }
 
@@ -32,7 +31,7 @@ const App = (props) => (
             fetchURL={baseUrl + 'api/self'}
             syncURL={baseUrl + 'api/sync'}/>
         <FriendPane
-            auth={auth}
+            auth={props.auth}
             friendURL={baseUrl + 'api/friends'} />
     </Window>
 );

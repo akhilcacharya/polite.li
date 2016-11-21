@@ -14,7 +14,7 @@ export default class PoliteBarPane extends React.Component {
         this.auth = props.auth;
         this.syncURL = props.syncURL;
         this.fetchURL = props.fetchURL + "?token=" + this.auth;
-
+        
         this.state = {
             selected: {
                 value: '',
@@ -45,6 +45,8 @@ export default class PoliteBarPane extends React.Component {
                     ...data.user.state,
                 }
             });
+        }).catch((err) => {
+            console.warn(err); 
         });
     }
 
