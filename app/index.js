@@ -23,14 +23,15 @@ function onClosed() {
 function createMainWindow() {
 	const is2nd = process.argv.indexOf('--2nd') >= 0;
 	var opts = {
-		width: 355, 
-		height: 570, 
-		minWidth: 355, 
-		minHeight: 570, 
+		width: 355,
+		height: 570,
+		minWidth: 355,
+		minHeight: 570,
 		'accept-first-mouse': true,
-		'title-bar-style': 'hidden' 
+		'title-bar-style': 'hidden',
+		title:'Polite' 
 	};
-  if (is2nd) { 
+  if (is2nd) {
     setOptsForDualScreen(opts);
   }
 
@@ -81,7 +82,7 @@ app.on('ready', () => {
 
 module.exports = {
 	getMainWindow : function(){
-		console.log("Getting window"); 
-		return mainWindow; 
+		console.log("Getting window");
+		return mainWindow;
 	}
-} 
+}
