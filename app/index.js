@@ -29,7 +29,7 @@ function createMainWindow() {
 		minHeight: 570,
 		'accept-first-mouse': true,
 		'title-bar-style': 'hidden',
-		title:'Polite' 
+		title:'Politeli'
 	};
   if (is2nd) {
     setOptsForDualScreen(opts);
