@@ -29,7 +29,7 @@ export default class FriendPane extends React.Component {
             'CUSTOM': '❓ Custom'
         };
 
-        this.onType = this.onType.bind(this); 
+        this.onType = this.onType.bind(this);
     }
 
     componentDidMount(){
@@ -63,7 +63,7 @@ export default class FriendPane extends React.Component {
         this.setState({
             ...this.state,
             filteredUsers: filteredUsers,
-        }); 
+        });
     }
 
 
@@ -73,9 +73,17 @@ export default class FriendPane extends React.Component {
                     <li key={idx} className="list-group-item card-1">
                         <img className="pull-left" src={user.avatar} width="72" height="72"/>
                         <div className="card-body pull-left">
+                          <div className="pull-left">
                             <h4><b>{user.name}</b></h4>
+                          </div>
+                          <br/>
+                          <div className="pull-left">
                             <h5>@{user.username}</h5>
+                          </div>
+                          <br/>
+                          <div className="pull-left">
                             <h5>{user.state.value == 'CUSTOM'? user.state.custom: this.CONSTANTS[user.state.value]}</h5>
+                          </div>
                         </div>
                     </li>
             );
@@ -85,10 +93,10 @@ export default class FriendPane extends React.Component {
 
         return (
             <div className="text-center">
-                <input 
-                    onChange={this.onType} 
-                    className="form-control search-box" 
-                    type="text" 
+                <input
+                    onChange={this.onType}
+                    className="form-control search-box"
+                    type="text"
                     placeholder="Search for someone"/>
                 <br/>
                 <ul className="list-group" style={{overflow: 'auto', maxHeight: 246}}>
