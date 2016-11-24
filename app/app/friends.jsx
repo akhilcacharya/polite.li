@@ -5,6 +5,7 @@ import ReactDom from "react-dom";
 import { Pane } from "react-photonkit";
 import _ from 'lodash';
 
+
 require('../index.scss');
 
 export default class FriendPane extends React.Component {
@@ -29,7 +30,7 @@ export default class FriendPane extends React.Component {
             'CUSTOM': '❓ Custom'
         };
 
-        this.onType = this.onType.bind(this); 
+        this.onType = this.onType.bind(this);
     }
 
     componentDidMount(){
@@ -63,7 +64,7 @@ export default class FriendPane extends React.Component {
         this.setState({
             ...this.state,
             filteredUsers: filteredUsers,
-        }); 
+        });
     }
 
 
@@ -81,14 +82,12 @@ export default class FriendPane extends React.Component {
             );
         });
 
-
-
         return (
-            <div className="text-center">
-                <input 
-                    onChange={this.onType} 
-                    className="form-control search-box" 
-                    type="text" 
+            <div className="text-center">                
+                <input
+                    onChange={this.onType}
+                    className="form-control search-box"
+                    type="text"
                     placeholder="Search for someone"/>
                 <br/>
                 <ul className="list-group" style={{overflow: 'auto', maxHeight: 246}}>
