@@ -4,6 +4,9 @@ import React from "react";
 import ReactDom from "react-dom";
 import { Pane } from "react-photonkit";
 import Select from 'react-select';
+
+import { STATUS, STATUS_DESCRIPTIONS, CONTACTS } from './common/constants.js'; 
+
 import 'react-select/dist/react-select.css';
 
 require('../index.scss');
@@ -22,15 +25,6 @@ export default class PoliteBarPane extends React.Component {
                 contact: '', 
             },
         };
-
-
-        this.CONSTANTS = {
-            FREE: 'FREE',
-            BUSY: 'BUSY',
-            EMERGENCIES: 'EMERGENCIES',
-            DND: 'DND',
-            CUSTOM: 'CUSTOM',
-        }
 
         this.onChange = this.onChange.bind(this);
         this.onBlurred = this.onBlurred.bind(this);
@@ -62,7 +56,7 @@ export default class PoliteBarPane extends React.Component {
                 contact: contact, 
             },
         }, () => {
-            if(this.state.selected.value == this.CONSTANTS.CUSTOM) return;
+            if(this.state.selected.value == STATUS.CUSTOM) return;
             this.syncState();
         });
     }
@@ -98,48 +92,6 @@ export default class PoliteBarPane extends React.Component {
     }
 
     render(){
-        const options = [
-            {
-                value: this.CONSTANTS.FREE,
-                label: '😀  Anytime!'
-            },
-            {
-                value: this.CONSTANTS.BUSY,
-                label: '😓  Later. Super busy.'
-            },
-            {
-                value: this.CONSTANTS.EMERGENCIES,
-                label: '🚒  Only for Emergencies'
-            },
-            {
-                value: this.CONSTANTS.DND,
-                label: '🚫 Do Not Disturb'
-            },
-            {
-                value: this.CONSTANTS.CUSTOM,
-                label: '❓ Custom'
-            }
-        ];
-
-        const contactOptions = [
-            {
-                value: 'PERSON', 
-                label: '💁 In-Person'
-            }, 
-            {
-                value: 'CELL', 
-                label: '📞 Cell'
-            }, 
-            {
-                value: 'SMS', 
-                label: '📱 Text', 
-            }, 
-            {
-                value: 'SKYPE', 
-                label: ' Skype', 
-            }, 
-        ]; 
-
         const customInput = (
                 <div className="input-group">
                     <input defaultValue={this.state.selected.custom}
@@ -164,7 +116,7 @@ export default class PoliteBarPane extends React.Component {
                         onChange={(status) => this.onChange({status: status})}
                         autosize={false}
                         searchable={true}
-                        options={options} />
+                        options={STATUS_DESCRIPTIONS} />
 
                 <div className="text-center">
                    <h3> How? </h3>
@@ -174,9 +126,9 @@ export default class PoliteBarPane extends React.Component {
                         value={this.state.selected.contact}
                         searchable={true}
                         onChange={(contact) => this.onChange({contact: contact})}
-                        options={contactOptions} />
+                        options={CONTACTS} />
 
-                { this.state.selected.value == this.CONSTANTS.CUSTOM? customInput : ""  }
+                { this.state.selected.value == STATUS.CUSTOM? customInput : ""  }
 
                 <br/>
                 <br/>
