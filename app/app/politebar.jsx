@@ -161,9 +161,7 @@ export default class PoliteBarPane extends React.Component {
                 <Select autofocus
                         value={this.state.selected.value}
                         noResultsText="Custom Status"
-                        onChange={(status) => {
-                            this.onChange({status: status});
-                        }}
+                        onChange={(status) => this.onChange({status: status})}
                         autosize={false}
                         searchable={true}
                         options={options} />
@@ -175,9 +173,7 @@ export default class PoliteBarPane extends React.Component {
                 <Select 
                         value={this.state.selected.contact}
                         searchable={true}
-                        onChange={(contact) => {
-                            this.onChange({contact: contact}); 
-                        }}
+                        onChange={(contact) => this.onChange({contact: contact})}
                         options={contactOptions} />
 
                 { this.state.selected.value == this.CONSTANTS.CUSTOM? customInput : ""  }
