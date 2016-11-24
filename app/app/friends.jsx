@@ -74,9 +74,17 @@ export default class FriendPane extends React.Component {
                     <li key={idx} className="list-group-item card-1">
                         <img className="pull-left" src={user.avatar} width="72" height="72"/>
                         <div className="card-body pull-left">
+                          <div className="pull-left">
                             <h4><b>{user.name}</b></h4>
+                          </div>
+                          <br/>
+                          <div className="pull-left">
                             <h5>@{user.username}</h5>
+                          </div>
+                          <br/>
+                          <div className="pull-left">
                             <h5>{user.state.value == 'CUSTOM'? user.state.custom: this.CONSTANTS[user.state.value]}</h5>
+                          </div>
                         </div>
                     </li>
             );
