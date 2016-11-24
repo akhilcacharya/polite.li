@@ -33,6 +33,8 @@ const App = (props) => (
         <FriendPane
             auth={props.auth}
             friendURL={baseUrl + 'api/friends'} />
+            
+
     </Window>
 );
 
