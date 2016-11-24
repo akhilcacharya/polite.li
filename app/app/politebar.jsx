@@ -19,8 +19,10 @@ export default class PoliteBarPane extends React.Component {
             selected: {
                 value: '',
                 custom: '',
+                contact: '', 
             },
         };
+
 
         this.CONSTANTS = {
             FREE: 'FREE',
@@ -50,11 +52,14 @@ export default class PoliteBarPane extends React.Component {
         });
     }
 
-    onChange(value){
+    onChange({contact, status}){
+        if(!contact) contact = this.state.selected.contact; 
+        if(!status)  status = this.state.selected.value; 
         this.setState({
             selected: {
-                value: value,
+                value: status,
                 custom: '',
+                contact: contact, 
             },
         }, () => {
             if(this.state.selected.value == this.CONSTANTS.CUSTOM) return;
@@ -69,6 +74,7 @@ export default class PoliteBarPane extends React.Component {
             selected: {
                 value: state.selected.value,
                 custom: custom,
+                contact: state.selected.contact, 
             },
           }, () => {
             this.syncState()
@@ -78,7 +84,6 @@ export default class PoliteBarPane extends React.Component {
     syncState(){
         const auth = this.auth;
         const state = this.state;
-
         fetch(this.syncURL, {
             method: 'post',
             headers: {
@@ -91,7 +96,6 @@ export default class PoliteBarPane extends React.Component {
             }),
         });
     }
-
 
     render(){
         const options = [
@@ -124,11 +128,11 @@ export default class PoliteBarPane extends React.Component {
             }, 
             {
                 value: 'CELL', 
-                label: ' Cell'
+                label: '📞 Cell'
             }, 
             {
                 value: 'SMS', 
-                label: ' Text', 
+                label: '📱 Text', 
             }, 
             {
                 value: 'SKYPE', 
@@ -157,19 +161,21 @@ export default class PoliteBarPane extends React.Component {
                 <Select autofocus
                         value={this.state.selected.value}
                         noResultsText="Custom Status"
-                        onChange={this.onChange}
+                        onChange={(status) => this.onChange({status: status})}
                         autosize={false}
                         searchable={true}
                         options={options} />
-                
+
                 <div className="text-center">
                    <h3> How? </h3>
                 </div>
 
                 <Select 
-                        value={contactOptions[0]}
+                        value={this.state.selected.contact}
                         searchable={true}
+                        onChange={(contact) => this.onChange({contact: contact})}
                         options={contactOptions} />
+
                 { this.state.selected.value == this.CONSTANTS.CUSTOM? customInput : ""  }
 
                 <br/>

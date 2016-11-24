@@ -38,7 +38,8 @@ const UserSchema = mongoose.Schema({
     state: {
         value: String,
         custom: String,
-    },
+        contact: String, 
+    }
 });
 
 mongoose.model("User", UserSchema);
@@ -108,6 +109,7 @@ app.get('/auth', (req, res) => {
                         state: {
                             value: 'FREE',
                             custom: '',
+                            contact: '', 
                         },
                     });
 
@@ -128,7 +130,6 @@ app.get('/received', (req, res) => {
 app.post("/api/sync", (req, res) => {
     const body = req.body;
     const token = body.auth;
-
     const User = mongoose.model("User");
     User.findOne({auth_token: token}, (err, user) => {
         if(err || !user){
@@ -138,6 +139,7 @@ app.post("/api/sync", (req, res) => {
         user.state = {
             value: body.state.selected.value,
             custom: body.state.selected.custom,
+            contact: body.state.selected.contact, 
         };
 
         user.save(() => {
