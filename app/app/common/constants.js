@@ -32,6 +32,8 @@ const CONTACTS = [
   },
 ];
 
+const INTEGRATIONS = ["Cell", "Text", "Skype", "Slack"]; 
+
 //TODO: UI Constants
 
-export {STATUS, STATUS_DESCRIPTIONS, CONTACTS}
+export {STATUS, STATUS_DESCRIPTIONS, CONTACTS, INTEGRATIONS}; 

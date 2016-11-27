@@ -4,10 +4,14 @@
  */
 
 import React from 'react'; 
+import ContactInfo from './contact.jsx'; 
+import { INTEGRATIONS } from './common/constants.js'
 
 
-export default class PreferencePane extends React.Component{
-    constructor(props){
-        super(props); 
-    }
-}
+const PreferencePane = (props) => (
+        <div>
+            <ContactInfo {...props} integrations={INTEGRATIONS} />
+        </div>
+); 
+
+export default PreferencePane; 
