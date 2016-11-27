@@ -22,7 +22,7 @@ export default class Contact extends React.Component {
             }
       }
 
-      componentWillMount(){
+      componentDidMount(){
             fetch(this.state.syncURL + '?token=' + this.state.auth, {
                   method: 'get',
                   mode: 'cors',
@@ -65,9 +65,7 @@ export default class Contact extends React.Component {
             if(Object.keys(this.state.information).length == 0){
                   this.state.integrations.forEach((i) => this.state.information[i] = {name: i, value: ''}); 
             }
-            
-            console.log("Render", this.state.information); 
-
+      
             const contacts = this.state.integrations.map((integration, idx) => (
                   <div className="row" key={idx}> 
                         <span className="col-xs-8 pull-left">
@@ -75,8 +73,12 @@ export default class Contact extends React.Component {
                         </span>
                         <input 
                               type="text"
-                              ref="text"
-                              onChange={(e) => (this.state.information[integration].value = e.target.value)} 
+                              onChange={(e) => {
+                                    this.state.information[integration].value = e.target.value;
+                                    this.setState({
+                                          ...this.state, 
+                                    });
+                              }} 
                               value={this.state.information[integration].value} 
                               className="form-control"/>
                   </div>
