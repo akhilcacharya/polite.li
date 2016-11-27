@@ -9,6 +9,9 @@ import { STATUS, STATUS_DESCRIPTIONS, CONTACTS } from './common/constants.js';
 
 import 'react-select/dist/react-select.css';
 
+import ContactInfo from './contact.jsx'; 
+
+
 require('../index.scss');
 
 export default class PoliteBarPane extends React.Component {

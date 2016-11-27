@@ -8,6 +8,8 @@ import parse from 'url-parse';
 
 import PoliteBarPane from './politebar.jsx';
 import FriendPane from './friends.jsx';
+import PreferencePane from './prefs.jsx'; 
+import Switcher from './switcher.jsx'; 
 
 require('../index.scss');
 
@@ -30,9 +32,14 @@ const App = (props) => (
             auth={props.auth}
             fetchURL={baseUrl + 'api/self'}
             syncURL={baseUrl + 'api/sync'}/>
-        <FriendPane
-            auth={props.auth}
-            friendURL={baseUrl + 'api/friends'} />
+        <Switcher>
+            <FriendPane
+                auth={props.auth}
+                friendURL={baseUrl + 'api/friends'} />
+            <PreferencePane 
+                auth={props.auth}
+                syncURL={baseUrl + 'api/prefs'} />
+        </Switcher>
     </Window>
 );
 

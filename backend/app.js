@@ -39,11 +39,13 @@ const UserSchema = mongoose.Schema({
         value: String,
         custom: String,
         contact: String, 
-    }
+    }, 
+    prefs: {
+        integration: [], 
+    }, 
 });
 
 mongoose.model("User", UserSchema);
-
 
 app.use(cors());
 app.use(bodyParser.urlencoded({
@@ -111,6 +113,9 @@ app.get('/auth', (req, res) => {
                             custom: '',
                             contact: '', 
                         },
+                        prefs: {
+                            integration: [], 
+                        }
                     });
 
                     newUser.save(() => {
@@ -147,6 +152,47 @@ app.post("/api/sync", (req, res) => {
         });
     });
 });
+
+app.get("/api/prefs", (req, res) => {
+    const token = req.query.token;
+
+    const User = mongoose.model("User"); 
+
+    User.findOne({auth_token: token}, (err, user) => {
+        if(err || !user){
+            res.status(401).json({message: "Unauthorized"});
+            return;
+        }
+
+        console.log(user.prefs); 
+
+        res.status(200).json({message: "Success", prefs: user.prefs}); 
+    });
+}); 
+
+
+app.post("/api/prefs", (req, res) => {
+    const body = req.body; 
+    const token = body.auth; 
+
+    const User = mongoose.model("User"); 
+
+    User.findOne({auth_token: token}, (err, user) => {
+        if(err || !user){
+            res.status(401).json({message: "Unauthorized"});
+            return;
+        }
+        
+        user.prefs = {
+            integration: body.prefs, 
+        }; 
+
+        user.save((err) => {
+            console.log("Saved!"); 
+            res.status(200).json({message: "Success"});
+        });
+    }); 
+}); 
 
 app.get("/api/self", (req, res) => {
     const token = req.query.token;

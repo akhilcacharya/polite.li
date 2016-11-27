@@ -5,6 +5,7 @@ import ReactDom from "react-dom";
 import { Pane } from "react-photonkit";
 import _ from 'lodash';
 
+
 require('../index.scss');
 
 export default class FriendPane extends React.Component {
@@ -89,10 +90,8 @@ export default class FriendPane extends React.Component {
             );
         });
 
-
-
         return (
-            <div className="text-center">
+            <div className="text-center">                
                 <input
                     onChange={this.onType}
                     className="form-control search-box"
