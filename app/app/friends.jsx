@@ -73,25 +73,20 @@ export default class FriendPane extends React.Component {
             return (
                     <li key={idx} className="list-group-item card-1">
                         <img className="pull-left" src={user.avatar} width="72" height="72"/>
-                        <div className="card-body pull-left">
-                          <div className="pull-left">
-                            <h4><b>{user.name}</b></h4>
-                          </div>
-                          <br/>
-                          <div className="pull-left">
+                        <div className="card-body text-left">
+                          <div className="text-left" style={{marginLeft: 5}}>
+                            <h5><b>{user.name}</b></h5>
                             <h5>@{user.username}</h5>
+                              <h5>{user.state.value == 'CUSTOM'? user.state.custom: this.CONSTANTS[user.state.value]}</h5>
                           </div>
-                          <br/>
-                          <div className="pull-left">
-                            <h5>{user.state.value == 'CUSTOM'? user.state.custom: this.CONSTANTS[user.state.value]}</h5>
-                          </div>
+
                         </div>
                     </li>
             );
         });
 
         return (
-            <div className="text-center">                
+            <div className="text-center">
                 <input
                     onChange={this.onType}
                     className="form-control search-box"
@@ -99,7 +94,8 @@ export default class FriendPane extends React.Component {
                     placeholder="Search for someone"/>
                 <br/>
                 <ul className="list-group" style={{overflow: 'auto', maxHeight: 246}}>
-                    {groupItems}
+                      {groupItems}
+
                 </ul>
             </div>
         );
