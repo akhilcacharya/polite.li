@@ -71,8 +71,8 @@ export default class FriendPane extends React.Component {
     render(){
         const groupItems = this.state.filteredUsers.map((user, idx) => {
             return (
-                    <li key={idx} className="list-group-item card-1">
-                        <img className="pull-left" src={user.avatar} width="72" height="72"/>
+                    <li key={idx} className="list-group-item card-1" >
+                        <img className="pull-left" src={user.avatar} width="45" height="45"/>
                         <div className="card-body pull-left">
                           <div className="pull-left">
                             <h4><b>{user.name}</b></h4>
@@ -91,14 +91,14 @@ export default class FriendPane extends React.Component {
         });
 
         return (
-            <div className="text-center">                
+            <div className="text-center">
                 <input
                     onChange={this.onType}
                     className="form-control search-box"
                     type="text"
                     placeholder="Search for someone"/>
                 <br/>
-                <ul className="list-group" style={{overflow: 'auto', maxHeight: 246}}>
+                <ul className="list-group" style={{overflow: 'scroll', maxHeight: 100}}>
                     {groupItems}
                 </ul>
             </div>
