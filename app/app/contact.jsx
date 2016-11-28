@@ -69,7 +69,7 @@ export default class Contact extends React.Component {
             const contacts = this.state.integrations.map((integration, idx) => (
                   <div className="row" key={idx}> 
                         <span className="col-xs-8 pull-left">
-                              {integration}{this.state.information[integration].value}
+                              {integration}
                         </span>
                         <input 
                               type="text"
