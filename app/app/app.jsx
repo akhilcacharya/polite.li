@@ -26,26 +26,30 @@ const onFinishLoad = (evt) => {
     }
 }
 
-        // {/* <Switcher>
-           
-        //     <PreferencePane 
-        //         auth={props.auth}
-        //         syncURL={baseUrl + 'api/prefs'} />
-        // </Switcher> */}
-
         
 
 const App = (props) => (
     <Window>
-         <PaneGroup>
-            <PoliteBarPane
-                auth={props.auth}
-                fetchURL={baseUrl + 'api/self'}
-                syncURL={baseUrl + 'api/sync'}/>
-            <FriendPane
-                auth={props.auth}
-                friendURL={baseUrl + 'api/friends'} />
+        <header className="toolbar toolbar-header" style={{zIndex: 2}}>
+                <h1 className="title">Polite.li</h1>
+        </header>
+        <PaneGroup>
+                <PoliteBarPane
+                    auth={props.auth}
+                    fetchURL={baseUrl + 'api/self'}
+                    syncURL={baseUrl + 'api/sync'}/>
+                <FriendPane
+                    auth={props.auth}
+                    friendURL={baseUrl + 'api/friends'} />
         </PaneGroup>
+
+        {/* 
+            <Switcher>    
+            <PreferencePane 
+                    auth={props.auth}
+                    syncURL={baseUrl + 'api/prefs'} />
+            </Switcher> 
+        */}
     </Window>
 );
 

@@ -86,14 +86,14 @@ export default class FriendPane extends React.Component {
         });
 
         return (
-            <div className="pane sidebar">
+            <div className="pane sidebar side-pane">
                 <ul className="list-group" style={{overflow: 'auto'}}>
                     <li className="list-group-header">
                           <input
                             onChange={this.onType}
                             className="form-control"
                             type="text"
-                            placeholder="Search for someone"/>
+                            placeholder={"🔎 Search"}/>
                      </li>
                     {groupItems}
                 </ul>
