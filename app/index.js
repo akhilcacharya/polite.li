@@ -6,7 +6,7 @@ const template = require('./scripts/menu')
 const ipc = require('electron').ipcMain;
 
 const sys = require('sys');
-const exec = require('child_process').exec;
+const exec = require('child_process').execSync;
 // report crashes to the Electron project
 require('crash-reporter').start();
 
@@ -91,41 +91,6 @@ module.exports = {
 }
 
 ipc.on('synchronous-message', (event, arg) => {
-	function puts(error, stdout, stderr) { sys.puts(stdout) }
-		exec("open -a Messages", puts);
+	 event.returnValue = exec("open -a Messages");
+
 })
-
-//const {ipcRenderer} = require('electron');
-// console.log(ipcRenderer.sendSync('synchronous-message', 'ping')) // prints "pong"
-//
-// ipc.on('asynchronous-reply', (event, arg) => {
-//   console.log(arg) // prints "pong"
-// })
-// ipc.send('asynchronous-message', 'ping')
-//console.log(ipc.sendSync('synchronous-message', 'ping'))
-
-// const ipcMain = require('electron').ipcMain;
-//
-// ipcMain.on('open-messenger', (event, arg) => {
-//   console.log(arg)  // prints "ping"
-//   event.sender.send('asynchronous-reply', 'pong')
-// })
-
-// const {ipcMain} = require('electron')
-// ipcMain.on('asynchronous-message', (event, arg) => {
-//  console.log(arg)  // prints "ping"
-//  event.sender.send('asynchronous-reply', 'pong')
-// })
-//
-// ipcMain.on('open messsenger', (event, arg) => {
-//   console.log(arg)  // prints "ping"
-//   event.returnValue = 'pong'
-// })
-
-
-// function foo(){
-// 	var sys = require('sys')
-// 	var exec = require('child_process').exec;
-// 	function puts(error, stdout, stderr) { sys.puts(stdout) }
-// 	exec("open .", puts);
-// }
