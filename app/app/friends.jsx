@@ -93,7 +93,7 @@ export default class FriendPane extends React.Component {
                             onChange={this.onType}
                             className="form-control"
                             type="text"
-                            placeholder="Search for someone"/>
+                            placeholder={"🔎 Search"}/>
                      </li>
                     {groupItems}
                 </ul>
