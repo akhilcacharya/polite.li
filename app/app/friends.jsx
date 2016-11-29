@@ -79,14 +79,13 @@ export default class FriendPane extends React.Component {
         const groupItems = this.state.filteredUsers.map((user, idx) => {
             return (
                     <li key={idx} className="list-group-item">
-                        <p className="pull-right">{emojiForContact(user.state.contact)}</p>
                         <img className="img-circle media-object pull-left" src={'https://avatars.githubusercontent.com/' + user.username} width="64" height="64"/>
                         <div className="media-body">
                             <strong>{user.name} </strong>
                             <br/>
                             <strong>@{user.username}</strong>
                             <p>{user.state.value == 'CUSTOM'? user.state.custom: this.CONSTANTS[user.state.value]}
-                            {user.state.value != 'DND'? <button className="btn pull-right btn-default" onClick={this.openWindow}>Contact</button> : <button className="btn pull-right btn-danger btn-disable">❌ Contact</button>}
+                            {user.state.value != 'DND'? <button className="btn pull-right btn-default" onClick={this.openWindow}>{emojiForContact(user.state.contact)} Contact</button> : <button className="btn pull-right btn-danger btn-disable">❌ Contact</button>}
 
 
 

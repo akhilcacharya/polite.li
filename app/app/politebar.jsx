@@ -112,7 +112,7 @@ export default class PoliteBarPane extends React.Component {
         return (
             <div className="pane pagination-centered main-pane">
               <br/>
-
+                <br/>
                 <div className="holder">
                 <img className="img-circle media-object" src={'https://avatars.githubusercontent.com/' + this.state.username} width="128" height="128"/>
                 </div>
