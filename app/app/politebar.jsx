@@ -5,11 +5,11 @@ import ReactDom from "react-dom";
 import { Pane } from "react-photonkit";
 import Select from 'react-select';
 
-import { STATUS, STATUS_DESCRIPTIONS, CONTACTS } from './common/constants.js'; 
+import { STATUS, STATUS_DESCRIPTIONS, CONTACTS } from './common/constants.js';
 
 import 'react-select/dist/react-select.css';
 
-import ContactInfo from './contact.jsx'; 
+import ContactInfo from './contact.jsx';
 
 
 require('../index.scss');
@@ -20,12 +20,14 @@ export default class PoliteBarPane extends React.Component {
         this.auth = props.auth;
         this.syncURL = props.syncURL;
         this.fetchURL = props.fetchURL + "?token=" + this.auth;
-        
+
         this.state = {
+            name: '',
+            username: '',
             selected: {
                 value: '',
                 custom: '',
-                contact: '', 
+                contact: '',
             },
         };
 
@@ -40,23 +42,25 @@ export default class PoliteBarPane extends React.Component {
             mode: 'cors',
         }).then((res) => res.json()).then((data) => {
             this.setState({
+                name: data.user.name,
+                username: data.user.username,
                 selected: {
                     ...data.user.state,
                 }
             });
         }).catch((err) => {
-            console.warn(err); 
+            console.warn(err);
         });
     }
 
     onChange({contact, status}){
-        if(!contact) contact = this.state.selected.contact; 
-        if(!status)  status = this.state.selected.value; 
+        if(!contact) contact = this.state.selected.contact;
+        if(!status)  status = this.state.selected.value;
         this.setState({
             selected: {
                 value: status,
                 custom: '',
-                contact: contact, 
+                contact: contact,
             },
         }, () => {
             if(this.state.selected.value == STATUS.CUSTOM) return;
@@ -71,7 +75,7 @@ export default class PoliteBarPane extends React.Component {
             selected: {
                 value: state.selected.value,
                 custom: custom,
-                contact: state.selected.contact, 
+                contact: state.selected.contact,
             },
           }, () => {
             this.syncState()
@@ -106,18 +110,26 @@ export default class PoliteBarPane extends React.Component {
         );
 
         return (
-            <div className="pane main-pane">
-                
+            <div className="pane pagination-centered main-pane">
+              <br/>
+
+                <div className="holder">
+                <img className="img-circle media-object" src={'https://avatars.githubusercontent.com/' + this.state.username} width="128" height="128"/>
+                </div>
                 <br/>
                 <br/>
                 <br/>
                 <br/>
                 <br/>
-                
+                <br/>
+                  <div className="text-center">
+                    <h5> {this.state.name}  @{this.state.username} </h5>
+                  </div>
+
                 <div className="text-center">
                    <h3> Can other people interrupt? </h3>
                 </div>
-                                
+
                 <Select autofocus
                         value={this.state.selected.value}
                         noResultsText="Custom Status"
@@ -130,16 +142,16 @@ export default class PoliteBarPane extends React.Component {
                    <h3> How? </h3>
                 </div>
 
-                <Select 
+                <Select
                         value={this.state.selected.contact}
                         searchable={true}
                         onChange={(contact) => this.onChange({contact: contact})}
                         options={CONTACTS} />
 
                 <br/>
-                
+
                 { this.state.selected.value == STATUS.CUSTOM? customInput : ""  }
-                
+
                 <br/>
             </div>
         );

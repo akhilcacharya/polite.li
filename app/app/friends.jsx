@@ -3,8 +3,10 @@
 import React from "react";
 import ReactDom from "react-dom";
 import { Pane } from "react-photonkit";
-import {emojiForContact} from './common/constants.js'; 
+import {emojiForContact} from './common/constants.js';
 import _ from 'lodash';
+
+const ipc = window.require('electron').ipcRenderer;
 
 
 require('../index.scss');
@@ -32,6 +34,7 @@ export default class FriendPane extends React.Component {
         };
 
         this.onType = this.onType.bind(this);
+        this.openWindow = this.openWindow.bind(this);
     }
 
     componentDidMount(){
@@ -68,27 +71,33 @@ export default class FriendPane extends React.Component {
         });
     }
 
+    openWindow(){
+        console.log(ipc.sendSync('synchronous-message', ''));
+    }
 
     render(){
         const groupItems = this.state.filteredUsers.map((user, idx) => {
-            idx++; 
-
             return (
                     <li key={idx} className="list-group-item">
-                        <p className="pull-right">{emojiForContact(user.state.contact)}</p> 
+                        <p className="pull-right">{emojiForContact(user.state.contact)}</p>
                         <img className="img-circle media-object pull-left" src={'https://avatars.githubusercontent.com/' + user.username} width="64" height="64"/>
                         <div className="media-body">
                             <strong>{user.name} </strong>
                             <br/>
                             <strong>@{user.username}</strong>
-                            <p>{user.state.value == 'CUSTOM'? user.state.custom: this.CONSTANTS[user.state.value]}</p>
+                            <p>{user.state.value == 'CUSTOM'? user.state.custom: this.CONSTANTS[user.state.value]}
+                            {user.state.value != 'DND'? <button className="btn pull-right btn-default" onClick={this.openWindow}>Contact</button> : <button className="btn pull-right btn-danger btn-disable">❌ Contact</button>}
+
+
+
+                            </p>
                         </div>
                     </li>
             );
         });
 
         return (
-            <div className="pane sidebar side-pane">
+            <div className="pane sidebar side-pane" style={{marginTop: 20}}>
                 <ul className="list-group" style={{overflow: 'auto'}}>
                     <li className="list-group-header">
                           <input
@@ -102,4 +111,6 @@ export default class FriendPane extends React.Component {
             </div>
         );
     }
-}
+
+
+ }

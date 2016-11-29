@@ -3,7 +3,10 @@ const app = require('app');
 const BrowserWindow = require('browser-window');
 const Menu = require('menu')
 const template = require('./scripts/menu')
+const ipc = require('electron').ipcMain;
 
+const sys = require('sys');
+const exec = require('child_process').execSync;
 // report crashes to the Electron project
 require('crash-reporter').start();
 
@@ -86,3 +89,8 @@ module.exports = {
 		return mainWindow;
 	}
 }
+
+ipc.on('synchronous-message', (event, arg) => {
+	 event.returnValue = exec("open -a Messages");
+
+})
