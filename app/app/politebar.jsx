@@ -106,7 +106,7 @@ export default class PoliteBarPane extends React.Component {
         );
 
         return (
-            <div className="padded-more">
+            <div className="pane">
                 <div className="text-center">
                    <h1 className="title-header"> Polite.li </h1>
                    <h3> Can other people interrupt? </h3>
@@ -135,8 +135,6 @@ export default class PoliteBarPane extends React.Component {
 
                 <br/>
                 <br/>
-
-
             </div>
         );
     }

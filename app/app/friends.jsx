@@ -70,32 +70,33 @@ export default class FriendPane extends React.Component {
 
     render(){
         const groupItems = this.state.filteredUsers.map((user, idx) => {
-            return (
-                    <li key={idx} className="list-group-item card-1">
-                        <img className="pull-left" src={'https://avatars.githubusercontent.com/' + user.username} width="72" height="72"/>
-                        <div className="card-body text-left">
-                          <div className="text-left" style={{marginLeft: 5}}>
-                            <h5><b>{user.name}</b></h5>
-                            <h5>@{user.username}</h5>
-                              <h5>{user.state.value == 'CUSTOM'? user.state.custom: this.CONSTANTS[user.state.value]}</h5>
-                          </div>
+            idx++; 
 
+            return (
+                    <li key={idx} className="list-group-item">
+                        <img className="img-circle media-object pull-left" src={'https://avatars.githubusercontent.com/' + user.username} width="32" height="32"/>
+                        <div className="media-body">
+                            <strong>{user.name}</strong>
+                            <br/>
+                            <strong>@{user.username}</strong>
+                            <p>{user.state.value == 'CUSTOM'? user.state.custom: this.CONSTANTS[user.state.value]}</p>
                         </div>
                     </li>
             );
         });
 
         return (
-            <div className="text-center">
-                <input
-                    onChange={this.onType}
-                    className="form-control search-box"
-                    type="text"
-                    placeholder="Search for someone"/>
+            <div className="pane pane-sm sidebar">
                 <br/>
-                <ul className="list-group" style={{overflow: 'auto', maxHeight: 246}}>
-                      {groupItems}
-
+                <ul className="list-group" style={{overflow: 'auto'}}>
+                    <li className="list-group-header">
+                          <input
+                            onChange={this.onType}
+                            className="form-control"
+                            type="text"
+                            placeholder="Search for someone"/>
+                     </li>
+                    {groupItems}
                 </ul>
             </div>
         );

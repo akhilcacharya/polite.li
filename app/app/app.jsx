@@ -3,7 +3,7 @@
 import React from "react";
 import ReactDOM from "react-dom";
 import WebView from 'react-electron-webview';
-import { Window } from "react-photonkit";
+import { Window, PaneGroup } from "react-photonkit";
 import parse from 'url-parse';
 
 import PoliteBarPane from './politebar.jsx';
@@ -26,20 +26,26 @@ const onFinishLoad = (evt) => {
     }
 }
 
+        // {/* <Switcher>
+           
+        //     <PreferencePane 
+        //         auth={props.auth}
+        //         syncURL={baseUrl + 'api/prefs'} />
+        // </Switcher> */}
+
+        
+
 const App = (props) => (
     <Window>
-        <PoliteBarPane
-            auth={props.auth}
-            fetchURL={baseUrl + 'api/self'}
-            syncURL={baseUrl + 'api/sync'}/>
-        <Switcher>
+         <PaneGroup>
+            <PoliteBarPane
+                auth={props.auth}
+                fetchURL={baseUrl + 'api/self'}
+                syncURL={baseUrl + 'api/sync'}/>
             <FriendPane
                 auth={props.auth}
                 friendURL={baseUrl + 'api/friends'} />
-            <PreferencePane 
-                auth={props.auth}
-                syncURL={baseUrl + 'api/prefs'} />
-        </Switcher>
+        </PaneGroup>
     </Window>
 );
 

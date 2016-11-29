@@ -23,10 +23,10 @@ function onClosed() {
 function createMainWindow() {
 	const is2nd = process.argv.indexOf('--2nd') >= 0;
 	var opts = {
-		width: 355,
-		height: 570,
-		minWidth: 355,
-		minHeight: 570,
+		width: 570,
+		height: 465,
+		minWidth: 570,
+		minHeight: 465,
 		'accept-first-mouse': true,
 		'title-bar-style': 'hidden',
 		title:'Politeli'
