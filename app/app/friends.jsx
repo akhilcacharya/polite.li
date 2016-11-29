@@ -5,6 +5,8 @@ import ReactDom from "react-dom";
 import { Pane } from "react-photonkit";
 import _ from 'lodash';
 
+const ipc = window.require('electron').ipcRenderer;
+
 
 require('../index.scss');
 
@@ -67,13 +69,15 @@ export default class FriendPane extends React.Component {
         });
     }
 
-
     render(){
         const groupItems = this.state.filteredUsers.map((user, idx) => {
             return (
                     <li key={idx} className="list-group-item card-1">
                         <img className="pull-left" src={'https://avatars.githubusercontent.com/' + user.username} width="72" height="72"/>
-                        <div className="card-body text-left">
+                        <div onclassName="card-body text-left">
+                          <button onClick={() => {
+                          console.log(ipc.sendSync('synchronous-message', ''));
+                          }}>Click me</button>
                           <div className="text-left" style={{marginLeft: 5}}>
                             <h5><b>{user.name}</b></h5>
                             <h5>@{user.username}</h5>
@@ -100,4 +104,6 @@ export default class FriendPane extends React.Component {
             </div>
         );
     }
-}
+
+
+ }
