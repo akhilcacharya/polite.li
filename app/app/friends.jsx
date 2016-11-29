@@ -84,7 +84,7 @@ export default class FriendPane extends React.Component {
                             <br/>
                             <strong>@{user.username}</strong>
                             <p>{user.state.value == 'CUSTOM'? user.state.custom: this.CONSTANTS[user.state.value]}
-                            {user.state.value != 'DND'? <button className="btn pull-right btn-default" onClick={this.openWindow}>Contact</button> : <button className="btn pull-right btn-default btn-disable">❌ Contact</button>}
+                            {user.state.value != 'DND'? <button className="btn pull-right btn-default" onClick={this.openWindow}>Contact</button> : <button className="btn pull-right btn-danger btn-disable">❌ Contact</button>}
 
 
 
