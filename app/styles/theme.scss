@@ -14,11 +14,16 @@ input {
     color: $titleHeader;
 }
 
+.btn-disable {
+        cursor: not-allowed;
+        pointer-events: none;
+}
+
 .list-group-item {
     background-color: $titleHeader;
-    color: black; 
+    color: black;
     border-radius: 2px;
-    height: 92px; 
+    height: 92px;
     margin: 15px;
 }
 
@@ -33,11 +38,11 @@ input {
 }
 
 .pane{
-    margin: 5px; 
+    margin: 5px;
 }
 
 .card-body {
-    margin-left: 10px; 
+    margin-left: 10px;
 }
 
 .card-1 {
