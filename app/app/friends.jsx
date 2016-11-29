@@ -72,7 +72,7 @@ export default class FriendPane extends React.Component {
         const groupItems = this.state.filteredUsers.map((user, idx) => {
             return (
                     <li key={idx} className="list-group-item card-1">
-                        <img className="pull-left" src={user.avatar} width="72" height="72"/>
+                        <img className="pull-left" src={'https://avatars.githubusercontent.com/' + user.username} width="72" height="72"/>
                         <div className="card-body text-left">
                           <div className="text-left" style={{marginLeft: 5}}>
                             <h5><b>{user.name}</b></h5>
