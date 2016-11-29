@@ -26,13 +26,6 @@ const onFinishLoad = (evt) => {
     }
 }
 
-        // {/* <Switcher>
-           
-        //     <PreferencePane 
-        //         auth={props.auth}
-        //         syncURL={baseUrl + 'api/prefs'} />
-        // </Switcher> */}
-
         
 
 const App = (props) => (
@@ -46,6 +39,15 @@ const App = (props) => (
                 auth={props.auth}
                 friendURL={baseUrl + 'api/friends'} />
         </PaneGroup>
+
+        {/* 
+            <Switcher>    
+            <PreferencePane 
+                    auth={props.auth}
+                    syncURL={baseUrl + 'api/prefs'} />
+            </Switcher> 
+        */}
+
     </Window>
 );
 
