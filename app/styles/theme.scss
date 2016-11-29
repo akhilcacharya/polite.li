@@ -1,10 +1,10 @@
 $bgColor: #607D8B;
 $titleHeader: #FFF;
 
-.window {
-    background-color: $bgColor;
-    color: white;
-}
+// .window {
+//     background-color: $bgColor;
+//     color: white;
+// }
 
 input {
     color: $bgColor;
@@ -30,6 +30,10 @@ input {
   height: 72px;
   position: relative;
   width: 330px;
+}
+
+.pane{
+    margin: 5px; 
 }
 
 .card-body {
