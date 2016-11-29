@@ -74,7 +74,7 @@ export default class FriendPane extends React.Component {
 
             return (
                     <li key={idx} className="list-group-item">
-                        <img className="img-circle media-object pull-left" src={'https://avatars.githubusercontent.com/' + user.username} width="32" height="32"/>
+                        <img className="img-circle media-object pull-left" src={'https://avatars.githubusercontent.com/' + user.username} width="64" height="64"/>
                         <div className="media-body">
                             <strong>{user.name}</strong>
                             <br/>
@@ -86,8 +86,7 @@ export default class FriendPane extends React.Component {
         });
 
         return (
-            <div className="pane pane-sm sidebar">
-                <br/>
+            <div className="pane sidebar">
                 <ul className="list-group" style={{overflow: 'auto'}}>
                     <li className="list-group-header">
                           <input
