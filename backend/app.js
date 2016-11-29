@@ -107,7 +107,7 @@ app.get('/auth', (req, res) => {
                         username: login,
                         name: name,
                         auth_token: token,
-                        avatar: avatar,
+                        avatar: 'https://avatars.githubusercontent.com/'+ login,
                         state: {
                             value: 'FREE',
                             custom: '',
