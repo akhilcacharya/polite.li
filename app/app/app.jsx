@@ -3,7 +3,7 @@
 import React from "react";
 import ReactDOM from "react-dom";
 import WebView from 'react-electron-webview';
-import { Window, PaneGroup } from "react-photonkit";
+import { Window, PaneGroup, Header } from "react-photonkit";
 import parse from 'url-parse';
 
 import PoliteBarPane from './politebar.jsx';
@@ -30,14 +30,17 @@ const onFinishLoad = (evt) => {
 
 const App = (props) => (
     <Window>
-         <PaneGroup>
-            <PoliteBarPane
-                auth={props.auth}
-                fetchURL={baseUrl + 'api/self'}
-                syncURL={baseUrl + 'api/sync'}/>
-            <FriendPane
-                auth={props.auth}
-                friendURL={baseUrl + 'api/friends'} />
+        <header className="toolbar toolbar-header" style={{zIndex: 2}}>
+                <h1 className="title">Polite.li</h1>
+        </header>
+        <PaneGroup>
+                <PoliteBarPane
+                    auth={props.auth}
+                    fetchURL={baseUrl + 'api/self'}
+                    syncURL={baseUrl + 'api/sync'}/>
+                <FriendPane
+                    auth={props.auth}
+                    friendURL={baseUrl + 'api/friends'} />
         </PaneGroup>
 
         {/* 

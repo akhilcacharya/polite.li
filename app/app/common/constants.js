@@ -1,7 +1,6 @@
 /**
  *  Store all relevant text constants
  */
-
 //Status Constants
 const STATUS = {
   FREE: 'FREE',
