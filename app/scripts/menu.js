@@ -3,6 +3,7 @@
 const app = require('app');
 const path = require('path');
 const dialog = require('dialog');
+const session = require('electron').session; 
 const NativeImage = require('native-image');
 
 
@@ -79,10 +80,12 @@ var darwinMenu = [{
     selector: 'logout:', 
     click(item, focusedWindow){
       const contents = focusedWindow.webContents; 
-      //Clear local storage token in the window
-      contents.executeJavaScript(`localStorage.clear()`); 
-      //Force reload the page to commit. 
-      contents.reload(); 
+      session.defaultSession.clearStorageData(() => {
+        //Clear local storage token in the window
+        contents.executeJavaScript(`localStorage.clear()`); 
+        //Force reload the page to commit. 
+        contents.reload(); 
+      }); 
     }
   }, 
    {
