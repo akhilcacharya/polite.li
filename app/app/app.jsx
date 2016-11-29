@@ -3,7 +3,7 @@
 import React from "react";
 import ReactDOM from "react-dom";
 import WebView from 'react-electron-webview';
-import { Window, PaneGroup, Header } from "react-photonkit";
+import { Window, PaneGroup } from "react-photonkit";
 import parse from 'url-parse';
 
 import PoliteBarPane from './politebar.jsx';
@@ -50,7 +50,6 @@ const App = (props) => (
                     syncURL={baseUrl + 'api/prefs'} />
             </Switcher> 
         */}
-
     </Window>
 );
 
