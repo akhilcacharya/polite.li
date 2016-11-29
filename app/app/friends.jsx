@@ -3,6 +3,7 @@
 import React from "react";
 import ReactDom from "react-dom";
 import { Pane } from "react-photonkit";
+import {emojiForContact} from './common/constants.js'; 
 import _ from 'lodash';
 
 
@@ -74,9 +75,10 @@ export default class FriendPane extends React.Component {
 
             return (
                     <li key={idx} className="list-group-item">
+                        <p className="pull-right">{emojiForContact(user.state.contact)}</p> 
                         <img className="img-circle media-object pull-left" src={'https://avatars.githubusercontent.com/' + user.username} width="64" height="64"/>
                         <div className="media-body">
-                            <strong>{user.name}</strong>
+                            <strong>{user.name} </strong>
                             <br/>
                             <strong>@{user.username}</strong>
                             <p>{user.state.value == 'CUSTOM'? user.state.custom: this.CONSTANTS[user.state.value]}</p>

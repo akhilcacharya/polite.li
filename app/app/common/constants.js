@@ -19,20 +19,35 @@ const STATUS_DESCRIPTIONS = [
 ];
 
 const CONTACTS = [
-  {value: 'PERSON', label: '💁 In-Person'},
-  {value: 'CELL', label: '📞 Cell'},
+  {
+    value: 'PERSON', 
+    label: '💁 In-Person',
+    emoji: '💁'
+  },
+  {
+    value: 'CELL', 
+    label: '📞 Cell', 
+    emoji: '📞', 
+  },
   {
     value: 'SMS',
     label: '📱 Text',
+    emoji: '📱'
   },
   {
     value: 'SKYPE',
-    label: ' Skype',
+    label: '🇸 Skype',
+    emoji: '🇸'
   },
 ];
+
+const emojiForContact = (value) => {
+  const result = CONTACTS.filter((contact) => contact.value == value)
+  return result[0].emoji; 
+}; 
 
 const INTEGRATIONS = ["Cell", "Text", "Skype", "Slack"]; 
 
 //TODO: UI Constants
 
-export {STATUS, STATUS_DESCRIPTIONS, CONTACTS, INTEGRATIONS}; 
+export {STATUS, STATUS_DESCRIPTIONS, CONTACTS, INTEGRATIONS, emojiForContact}; 
