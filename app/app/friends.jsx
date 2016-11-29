@@ -33,6 +33,7 @@ export default class FriendPane extends React.Component {
         };
 
         this.onType = this.onType.bind(this);
+        this.openWindow = this.openWindow.bind(this);
     }
 
     componentDidMount(){
@@ -69,37 +70,41 @@ export default class FriendPane extends React.Component {
         });
     }
 
+    openWindow(){
+        console.log(ipc.sendSync('synchronous-message', ''));
+    }
+
     render(){
         const groupItems = this.state.filteredUsers.map((user, idx) => {
             return (
-                    <li key={idx} className="list-group-item card-1">
-                        <img className="pull-left" src={'https://avatars.githubusercontent.com/' + user.username} width="72" height="72"/>
-                        <div onclassName="card-body text-left">
-                          <button onClick={() => {
-                          console.log(ipc.sendSync('synchronous-message', ''));
-                          }}>Click me</button>
-                          <div className="text-left" style={{marginLeft: 5}}>
-                            <h5><b>{user.name}</b></h5>
-                            <h5>@{user.username}</h5>
-                              <h5>{user.state.value == 'CUSTOM'? user.state.custom: this.CONSTANTS[user.state.value]}</h5>
-                          </div>
+                    <li key={idx} className="list-group-item">
+                        <img className="img-circle media-object pull-left" src={'https://avatars.githubusercontent.com/' + user.username} width="64" height="64"/>
+                        <div className="media-body">
+                            <strong>{user.name}</strong>
+                            <br/>
+                            <strong>@{user.username}</strong>
+                            <p>{user.state.value == 'CUSTOM'? user.state.custom: this.CONSTANTS[user.state.value]}
+                            {user.state.value != 'DND'? <button className="btn pull-right btn-default" onClick={this.openWindow}>Contact</button> : <button className="btn pull-right btn-default">❌ Contact</button>}
 
+
+
+                            </p>
                         </div>
                     </li>
             );
         });
 
         return (
-            <div className="text-center">
-                <input
-                    onChange={this.onType}
-                    className="form-control search-box"
-                    type="text"
-                    placeholder="Search for someone"/>
-                <br/>
-                <ul className="list-group" style={{overflow: 'auto', maxHeight: 246}}>
-                      {groupItems}
-
+            <div className="pane sidebar">
+                <ul className="list-group" style={{overflow: 'auto'}}>
+                    <li className="list-group-header">
+                          <input
+                            onChange={this.onType}
+                            className="form-control"
+                            type="text"
+                            placeholder="Search for someone"/>
+                     </li>
+                    {groupItems}
                 </ul>
             </div>
         );

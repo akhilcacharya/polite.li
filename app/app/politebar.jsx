@@ -106,13 +106,18 @@ export default class PoliteBarPane extends React.Component {
         );
 
         return (
-            <div className="padded-more">
+            <div className="pane pagination-centered">
+                
+                <br/>
+                <br/>
+                <br/>
+                <br/>
+                <br/>
+                
                 <div className="text-center">
-                   <h1 className="title-header"> Polite.li </h1>
                    <h3> Can other people interrupt? </h3>
                 </div>
-                
-                
+                                
                 <Select autofocus
                         value={this.state.selected.value}
                         noResultsText="Custom Status"
@@ -131,12 +136,11 @@ export default class PoliteBarPane extends React.Component {
                         onChange={(contact) => this.onChange({contact: contact})}
                         options={CONTACTS} />
 
+                <br/>
+                
                 { this.state.selected.value == STATUS.CUSTOM? customInput : ""  }
-
+                
                 <br/>
-                <br/>
-
-
             </div>
         );
     }
