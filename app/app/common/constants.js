@@ -35,9 +35,9 @@ const CONTACTS = [
     emoji: '📱'
   },
   {
-    value: 'SKYPE',
-    label: '🇸 Skype',
-    emoji: '🇸'
+    value: 'SLACK',
+    label: '🦃 Slack',
+    emoji: '🦃'
   },
 ];
 
@@ -46,7 +46,7 @@ const emojiForContact = (value) => {
   return result[0].emoji; 
 }; 
 
-const INTEGRATIONS = ["Cell", "Text", "Skype", "Slack"]; 
+const INTEGRATIONS = ["Cell", "Text", "Slack"]; 
 
 //TODO: UI Constants
 

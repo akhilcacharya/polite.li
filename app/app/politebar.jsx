@@ -110,7 +110,7 @@ export default class PoliteBarPane extends React.Component {
         );
 
         return (
-            <div className="pane pagination-centered main-pane">
+            <div className="pane pagination-centered main-pane" style={{}}>
               <br/>
                 <br/>
                 <div className="holder">
