@@ -76,7 +76,9 @@ export default class FriendPane extends React.Component {
         if(s == "SMS")
             console.log(ipc.sendSync('open-messages', ''));
         if(s == "CELL")
-            console.log(ipc.sendSync('open-messages', ''));
+            console.log(ipc.sendSync('open-contacts', ''));
+        if(s == "SLACK")
+            console.log(ipc.sendSync('open-slack', ''));
 
     }
 
