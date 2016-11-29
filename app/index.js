@@ -104,3 +104,9 @@ ipc.on('open-slack', (event, arg) => {
 	 event.returnValue = exec("open -a Slack");
 
 })
+
+
+ipc.on('open-email', (event, arg) => {
+	 event.returnValue = exec("open -a mail");
+
+})

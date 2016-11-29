@@ -39,6 +39,11 @@ const CONTACTS = [
     label: '🦃 Slack',
     emoji: '🦃'
   },
+  {
+    value: 'EMAIL',
+    label: '📬 email',
+    emoji: '📬'
+  },
 ];
 
 const emojiForContact = (value) => {
