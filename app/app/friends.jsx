@@ -86,7 +86,7 @@ export default class FriendPane extends React.Component {
         });
 
         return (
-            <div className="pane sidebar">
+            <div className="pane sidebar side-pane">
                 <ul className="list-group" style={{overflow: 'auto'}}>
                     <li className="list-group-header">
                           <input

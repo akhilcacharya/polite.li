@@ -23,9 +23,9 @@ function onClosed() {
 function createMainWindow() {
 	const is2nd = process.argv.indexOf('--2nd') >= 0;
 	var opts = {
-		width: 650,
+		width: 670,
 		height: 465,
-		minWidth: 650,
+		minWidth: 670,
 		minHeight: 465,
 		'accept-first-mouse': true,
 		'title-bar-style': 'hidden',
