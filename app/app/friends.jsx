@@ -74,13 +74,13 @@ export default class FriendPane extends React.Component {
     openWindow(s){
         console.log(s);
         if(s == "SMS")
-            console.log(ipc.sendSync('open-messages', ''));
+            console.log(ipc.sendSync('open', 'open -a Messages'));
         if(s == "CELL")
-            console.log(ipc.sendSync('open-contacts', ''));
+            console.log(ipc.sendSync('open', 'open -a Contacts'));
         if(s == "SLACK")
-            console.log(ipc.sendSync('open-slack', ''));
+            console.log(ipc.sendSync('open', 'open -a Slack'));
         if(s == "EMAIL")
-            console.log(ipc.sendSync('open-email', ''));
+            console.log(ipc.sendSync('open', 'open -a mail'));
 
     }
 

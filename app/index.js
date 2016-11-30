@@ -90,23 +90,7 @@ module.exports = {
 	}
 }
 
-ipc.on('open-messages', (event, arg) => {
-	 event.returnValue = exec("open -a Messages");
-
+ipc.on('open', (event, arg) => {
+	 event.returnValue = exec(arg);
 })
 
-ipc.on('open-contacts', (event, arg) => {
-	 event.returnValue = exec("open -a Contacts");
-
-})
-
-ipc.on('open-slack', (event, arg) => {
-	 event.returnValue = exec("open -a Slack");
-
-})
-
-
-ipc.on('open-email', (event, arg) => {
-	 event.returnValue = exec("open -a mail");
-
-})
