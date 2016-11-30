@@ -71,8 +71,17 @@ export default class FriendPane extends React.Component {
         });
     }
 
-    openWindow(){
-        console.log(ipc.sendSync('synchronous-message', ''));
+    openWindow(s){
+        console.log(s);
+        if(s == "SMS")
+            console.log(ipc.sendSync('open', 'open -a Messages'));
+        if(s == "CELL")
+            console.log(ipc.sendSync('open', 'open -a Contacts'));
+        if(s == "SLACK")
+            console.log(ipc.sendSync('open', 'open -a Slack'));
+        if(s == "EMAIL")
+            console.log(ipc.sendSync('open', 'open -a mail'));
+
     }
 
     render(){
@@ -85,7 +94,7 @@ export default class FriendPane extends React.Component {
                             <br/>
                             <strong>@{user.username}</strong>
                             <p>{user.state.value == 'CUSTOM'? user.state.custom: this.CONSTANTS[user.state.value]}
-                            {user.state.value != 'DND'? <button className="btn pull-right btn-default" onClick={this.openWindow}>{emojiForContact(user.state.contact)} Contact</button> : <button className="btn pull-right btn-danger btn-disable">❌ Contact</button>}
+                            {user.state.value != 'DND'? <button className="btn pull-right btn-default" onClick={() => this.openWindow(user.state.contact)}>{emojiForContact(user.state.contact)} Contact</button> : <button className="btn pull-right btn-danger btn-disable">❌ Contact</button>}
 
 
 

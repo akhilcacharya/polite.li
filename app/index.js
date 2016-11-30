@@ -26,10 +26,10 @@ function onClosed() {
 function createMainWindow() {
 	const is2nd = process.argv.indexOf('--2nd') >= 0;
 	var opts = {
-		width: 670,
-		height: 465,
-		minWidth: 670,
-		minHeight: 465,
+		width: 750,
+		height: 600,
+		minWidth: 750,
+		minHeight: 600,
 		'accept-first-mouse': true,
 		'title-bar-style': 'hidden',
 		title:'Politeli'
@@ -90,7 +90,7 @@ module.exports = {
 	}
 }
 
-ipc.on('synchronous-message', (event, arg) => {
-	 event.returnValue = exec("open -a Messages");
-
+ipc.on('open', (event, arg) => {
+	 event.returnValue = exec(arg);
 })
+

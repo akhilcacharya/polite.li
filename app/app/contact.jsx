@@ -2,7 +2,7 @@
  * Contact.jsx 
  * Stateless component to show a list of the possible contact information to add.  
  * Example:  
- * <ContactInfo integrations={["Cell", "Text", "Skype", "Slack"]} onFinish={(information) => {
+ * <ContactInfo integrations={["Cell", "Text", "Slack"]} onFinish={(information) => {
  *      console.log(information); 
  *  }}/>
  */
