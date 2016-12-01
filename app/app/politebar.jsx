@@ -123,7 +123,7 @@ export default class PoliteBarPane extends React.Component {
                 <br/>
                 <br/>
                   <div className="text-center">
-                    <h5> {this.state.name}  @{this.state.username} </h5>
+                    <h4> {this.state.name}  @{this.state.username} </h4>
                   </div>
 
                 <div className="text-center">
