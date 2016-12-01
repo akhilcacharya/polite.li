@@ -90,7 +90,7 @@ export default class FriendPane extends React.Component {
                     <li key={idx} className="list-group-item">
                         <img className="img-circle media-object pull-left" src={'https://avatars.githubusercontent.com/' + user.username} width="64" height="64"/>
                         <div className="media-body">
-                            <h4><strong>{user.name} </strong></h4>
+                            <h4><strong>{user.name.length == 0 ? user.username : user.name} </strong></h4>
                             
                             <h5><strong>@{user.username}</strong></h5>
                             <h5>{user.state.value == 'CUSTOM'? user.state.custom: this.CONSTANTS[user.state.value]}
