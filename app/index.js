@@ -27,9 +27,9 @@ function createMainWindow() {
 	const is2nd = process.argv.indexOf('--2nd') >= 0;
 	var opts = {
 		width: 750,
-		height: 600,
+		height: 550,
 		minWidth: 750,
-		minHeight: 600,
+		minHeight: 550,
 		'accept-first-mouse': true,
 		'title-bar-style': 'hidden',
 		title:'Politeli'
