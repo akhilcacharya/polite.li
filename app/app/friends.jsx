@@ -85,20 +85,24 @@ export default class FriendPane extends React.Component {
     }
 
     render(){
+       // console.log(this.state.filteredUsers.map(user => user.name)); 
+        this.state.filteredUsers.sort((a, b) => {
+            return a.name > b.name? 1: -1; 
+        }); 
+       // console.log(this.state.filteredUsers.map(user => user.name)); 
+
         const groupItems = this.state.filteredUsers.map((user, idx) => {
             return (
                     <li key={idx} className="list-group-item">
                         <img className="img-circle media-object pull-left" src={'https://avatars.githubusercontent.com/' + user.username} width="64" height="64"/>
                         <div className="media-body">
-                            <strong>{user.name} </strong>
-                            <br/>
-                            <strong>@{user.username}</strong>
-                            <p>{user.state.value == 'CUSTOM'? user.state.custom: this.CONSTANTS[user.state.value]}
-                            {user.state.value != 'DND'? <button className="btn pull-right btn-default" onClick={() => this.openWindow(user.state.contact)}>{emojiForContact(user.state.contact)} Contact</button> : <button className="btn pull-right btn-danger btn-disable">❌ Contact</button>}
+                            <h4><strong>{user.name} </strong></h4>
+                            
+                            <h5><strong>@{user.username}</strong></h5>
+                            <h5>{user.state.value == 'CUSTOM'? user.state.custom: this.CONSTANTS[user.state.value]}
+                            {user.state.value != 'DND'? <button className="btn pull-right btn-default" onClick={() => this.openWindow(user.state.contact)}>{emojiForContact(user.state.contact)} {user.state.contact}</button> : <button className="btn pull-right btn-danger btn-disable">Not Available</button>}
 
-
-
-                            </p>
+                            </h5>
                         </div>
                     </li>
             );

@@ -27,13 +27,20 @@ input {
     margin-right: auto;
 }
 
+
+.contact-button{
+    height:25px;
+    width:100px;
+}
+
+
 .btn-disable {
         cursor: not-allowed;
         pointer-events: none;
 }
 
 .list-group-item {
-    background-color: #f5f5f4;
+    background-color: rgb(246,246,246);
     color: black;
 }
 
@@ -43,11 +50,19 @@ input {
 }
 
 .pane{
-    margin: 5px;
+    //margin: 5px;
+    border-color: #ffffff #ffffff;
+}
+
+.selectPane {
+    margin: 8px;
+    font-size: 15px;
 }
 
 .main-pane {
-    margin: 5px;
+   // margin: 5px;
+    background-color: white;
+    
 }
 
 webview {

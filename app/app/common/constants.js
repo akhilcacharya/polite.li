@@ -41,7 +41,7 @@ const CONTACTS = [
   },
   {
     value: 'EMAIL',
-    label: '📬 email',
+    label: '📬 Email',
     emoji: '📬'
   },
 ];
