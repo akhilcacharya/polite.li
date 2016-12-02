@@ -89,7 +89,7 @@ export default class FriendPane extends React.Component {
         this.state.filteredUsers.sort((a, b) => {
             return a.name > b.name? 1: -1; 
         }); 
-       // console.log(this.state.filteredUsers.map(user => user.name)); 
+        console.log(this.state.filteredUsers.map(user => user.name)); 
 
         const groupItems = this.state.filteredUsers.map((user, idx) => {
             return (
@@ -100,7 +100,7 @@ export default class FriendPane extends React.Component {
                             
                             <h5><strong>@{user.username}</strong></h5>
                             <h5>{user.state.value == 'CUSTOM'? user.state.custom: this.CONSTANTS[user.state.value]}
-                            {user.state.value != 'DND'? <button className="btn pull-right btn-default" onClick={() => this.openWindow(user.state.contact)}>{emojiForContact(user.state.contact)} {user.state.contact}</button> : <button className="btn pull-right btn-danger btn-disable">Not Available</button>}
+                            {user.state.value != 'DND'? <button className="btn pull-right btn-default" onClick={() => this.openWindow(user.state.contact)}> <img className = "contact-icon" src={"../assets/"+user.state.contact+".png"}/> </button> : <button className="btn pull-right btn-danger btn-disable">Not Available</button>}
 
                             </h5>
                         </div>

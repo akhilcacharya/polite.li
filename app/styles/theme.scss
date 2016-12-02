@@ -28,11 +28,6 @@ input {
 }
 
 
-.contact-button{
-    height:25px;
-    width:100px;
-}
-
 
 .btn-disable {
         cursor: not-allowed;
@@ -42,6 +37,11 @@ input {
 .list-group-item {
     background-color: rgb(246,246,246);
     color: black;
+}
+
+.contact-icon {
+    height: 20px;
+    width: 20px;
 }
 
 .side-pane {
