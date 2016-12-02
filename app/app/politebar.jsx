@@ -100,7 +100,8 @@ export default class PoliteBarPane extends React.Component {
 
     render(){
         const customInput = (
-                <div className="input-group">
+                <div className="input-group" style={{marginLeft: 10, marginRight: 10}}>
+                    <h4> Custom Status: </h4>
                     <input defaultValue={this.state.selected.custom}
                            onBlur={this.onBlurred}
                            placeholder="Custom Status"
@@ -111,18 +112,13 @@ export default class PoliteBarPane extends React.Component {
 
         return (
             <div className="pane pagination-centered main-pane" style={{overflow: 'hidden'}}>
-              <br/>
-                <br/>
-                <div className="holder">
-                <img className="img-circle media-object" src={'https://avatars.githubusercontent.com/' + this.state.username} width="128" height="128"/>
-                </div>
-                <br/>
-                <br/>
-                <br/>
-                <br/>
                 <br/>
                 <br/>
                 <div className="text-center">
+                    <img className="img-circle media-object" src={'https://avatars.githubusercontent.com/' + this.state.username} width="128" height="128"/>
+                </div>
+                                                           
+                <div className="text-center" style={{marginTop: -20}}>
                     <h4> {this.state.name} </h4>
                 </div>
                 <div className="text-center" style={{marginTop: -20}}>
@@ -134,14 +130,14 @@ export default class PoliteBarPane extends React.Component {
                 </div>
 
                 <div className="selectPane">
-                <Select autofocus
-                        value={this.state.selected.value}
-                        noResultsText="Custom Status"
-                        onChange={(status) => this.onChange({status: status})}
-                        autosize={false}
-                        style={{margin:5}}
-                        searchable={true}
-                        options={STATUS_DESCRIPTIONS} />
+                    <Select autofocus
+                            value={this.state.selected.value}
+                            noResultsText="Custom Status"
+                            onChange={(status) => this.onChange({status: status})}
+                            autosize={false}
+                            style={{margin:5}}
+                            searchable={true}
+                            options={STATUS_DESCRIPTIONS} />
                 </div>
 
                 <div className="text-center">
@@ -149,18 +145,14 @@ export default class PoliteBarPane extends React.Component {
                 </div>
                 
                 <div className="selectPane">
-                <Select
-                        value={this.state.selected.contact}
-                        searchable={true}
-                        style={{margin:5}}
-                        onChange={(contact) => this.onChange({contact: contact})}
-                        options={CONTACTS} />
-
-                <br/>
+                    <Select
+                            value={this.state.selected.contact}
+                            searchable={true}
+                            style={{margin:5}}
+                            onChange={(contact) => this.onChange({contact: contact})}
+                            options={CONTACTS} />
                 </div>
-
                 { this.state.selected.value == STATUS.CUSTOM? customInput : ""  }
-
                 <br/>
             </div>
         );
