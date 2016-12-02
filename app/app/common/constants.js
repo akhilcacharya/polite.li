@@ -18,6 +18,16 @@ const STATUS_DESCRIPTIONS = [
   {value: STATUS.CUSTOM, label: '❓ Custom'}
 ];
 
+const SORT_DESCRIPTIONS = [
+  {
+    value: "name", label: "Name", 
+  }, 
+  {
+    value: "username", label: "Username", 
+  }
+]; 
+
+
 const CONTACTS = [
   {
     value: 'PERSON', 
@@ -55,4 +65,4 @@ const INTEGRATIONS = ["Cell", "Text", "Slack"];
 
 //TODO: UI Constants
 
-export {STATUS, STATUS_DESCRIPTIONS, CONTACTS, INTEGRATIONS, emojiForContact}; 
+export {STATUS, STATUS_DESCRIPTIONS, CONTACTS, INTEGRATIONS, SORT_DESCRIPTIONS, emojiForContact}; 

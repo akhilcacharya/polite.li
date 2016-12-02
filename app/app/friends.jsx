@@ -3,8 +3,10 @@
 import React from "react";
 import ReactDom from "react-dom";
 import { Pane } from "react-photonkit";
-import {emojiForContact} from './common/constants.js';
+import {emojiForContact, SORT_DESCRIPTIONS } from './common/constants.js';
 import _ from 'lodash';
+import Select from 'react-select';
+
 
 const ipc = window.require('electron').ipcRenderer;
 
@@ -21,6 +23,7 @@ export default class FriendPane extends React.Component {
         this.url += '?token=' + this.auth;
 
         this.state = {
+            sortKey: SORT_DESCRIPTIONS[0].value, 
             users: [],
             filteredUsers: [],
         };
@@ -43,6 +46,7 @@ export default class FriendPane extends React.Component {
             mode: 'cors',
         }).then((res) => res.json()).then((data) => {
             this.setState({
+                ...this.state, 
                 users: data.users,
                 filteredUsers: data.users.slice(),
             });
@@ -85,40 +89,38 @@ export default class FriendPane extends React.Component {
     }
 
     render(){
-       // console.log(this.state.filteredUsers.map(user => user.name)); 
         this.state.filteredUsers.sort((a, b) => {
             return a.name > b.name? 1: -1; 
         }); 
-       // console.log(this.state.filteredUsers.map(user => user.name)); 
-
-        const groupItems = this.state.filteredUsers.map((user, idx) => {
-            return (
-                    <li key={idx} className="list-group-item">
-                        <img className="img-circle media-object pull-left" src={'https://avatars.githubusercontent.com/' + user.username} width="64" height="64"/>
-                        <div className="media-body">
-                            <h4><strong>{user.name} </strong></h4>
-                            
-                            <h5><strong>@{user.username}</strong></h5>
-                            <h5>{user.state.value == 'CUSTOM'? user.state.custom: this.CONSTANTS[user.state.value]}
-                            {user.state.value != 'DND'? <button className="btn pull-right btn-default" onClick={() => this.openWindow(user.state.contact)}>{emojiForContact(user.state.contact)} {user.state.contact}</button> : <button className="btn pull-right btn-danger btn-disable">Not Available</button>}
-
-                            </h5>
-                        </div>
-                    </li>
-            );
-        });
-
+       
         return (
             <div className="pane sidebar side-pane" style={{marginTop: 20}}>
                 <ul className="list-group" style={{overflow: 'auto'}}>
                     <li className="list-group-header">
+                          
                           <input
                             onChange={this.onType}
-                            className="form-control"
+                            className="col-xs-8 form-control"
                             type="text"
                             placeholder={"🔎 Search"}/>
+
                      </li>
-                    {groupItems}
+                    {this.state.filteredUsers.map((user, idx) => {
+                            return (
+                                    <li key={idx} className="list-group-item">
+                                        <img className="img-circle media-object pull-left" src={'https://avatars.githubusercontent.com/' + user.username} width="64" height="64"/>
+                                        <div className="media-body">
+                                            <h4><strong>{user.name} </strong></h4>
+                                            
+                                            <h5><strong>@{user.username}</strong></h5>
+                                            <h5>{user.state.value == 'CUSTOM'? user.state.custom: this.CONSTANTS[user.state.value]}
+                                            {user.state.value != 'DND'? <button className="btn pull-right btn-default" onClick={() => this.openWindow(user.state.contact)}>{emojiForContact(user.state.contact)} {user.state.contact}</button> : <button className="btn pull-right btn-danger btn-disable">Not Available</button>}
+
+                                            </h5>
+                                        </div>
+                                    </li>
+                            );
+                        })}
                 </ul>
             </div>
         );
