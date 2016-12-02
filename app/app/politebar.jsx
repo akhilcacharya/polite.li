@@ -110,7 +110,7 @@ export default class PoliteBarPane extends React.Component {
         );
 
         return (
-            <div className="pane pagination-centered main-pane" style={{}}>
+            <div className="pane pagination-centered main-pane" style={{overflow: 'hidden'}}>
               <br/>
                 <br/>
                 <div className="holder">
@@ -122,9 +122,12 @@ export default class PoliteBarPane extends React.Component {
                 <br/>
                 <br/>
                 <br/>
-                  <div className="text-center">
-                    <h4> {this.state.name}  @{this.state.username} </h4>
-                  </div>
+                <div className="text-center">
+                    <h4> {this.state.name} </h4>
+                </div>
+                <div className="text-center" style={{marginTop: -20}}>
+                    <h4>  @{this.state.username} </h4>
+                </div>
 
                 <div className="text-center">
                    <h3> Can other people interrupt? </h3>
