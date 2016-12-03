@@ -56,8 +56,13 @@ const emojiForContact = (value) => {
   return result[0].emoji; 
 }; 
 
+const imageForContact = (value) => {
+  const result = CONTACTS.filter((contact) => contact.value == value)
+  if(result.length == 0) return ""; 
+  return result[0].icon; 
+}
 const INTEGRATIONS = ["Cell", "Text", "Slack"]; 
 
 //TODO: UI Constants
 
-export {STATUS, STATUS_DESCRIPTIONS, CONTACTS, INTEGRATIONS, emojiForContact}; 
+export {STATUS, STATUS_DESCRIPTIONS, CONTACTS, INTEGRATIONS, emojiForContact, imageForContact}; 
