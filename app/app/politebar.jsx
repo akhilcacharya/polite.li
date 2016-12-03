@@ -24,6 +24,7 @@ export default class PoliteBarPane extends React.Component {
         this.state = {
             name: '',
             username: '',
+            msg: '', 
             selected: {
                 value: '',
                 custom: '',
@@ -50,6 +51,18 @@ export default class PoliteBarPane extends React.Component {
             });
         }).catch((err) => {
             console.warn(err);
+            this.setState({
+                ...this.state, 
+                msg: '❗ Error fetching data' 
+            }); 
+
+            setTimeout(() => {
+                this.setState({
+                    ...this.state, 
+                    msg: '', 
+                }); 
+            }, 1200); 
+
         });
     }
 
@@ -95,6 +108,19 @@ export default class PoliteBarPane extends React.Component {
                 auth: auth,
                 state: state
             }),
+        }).then(() => {
+            this.setState({
+                ...this.state, 
+                msg: '✔ Synced!' 
+            })
+
+            setTimeout(() => {
+                this.setState({
+                    ...this.state, 
+                    msg: '', 
+                }); 
+            }, 2000); 
+
         });
     }
 
@@ -153,6 +179,8 @@ export default class PoliteBarPane extends React.Component {
                 </div>
                 { this.state.selected.value == STATUS.CUSTOM? customInput : ""  }
                 <br/>
+                <p className="text-center">  {this.state.msg}</p>
+
             </div>
         );
     }
