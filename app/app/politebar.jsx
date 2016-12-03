@@ -5,14 +5,14 @@ import ReactDom from "react-dom";
 import { Pane } from "react-photonkit";
 import Select from 'react-select';
 
-import { STATUS, STATUS_DESCRIPTIONS, CONTACTS } from './common/constants.js';
+import { STATUS, STATUS_DESCRIPTIONS, CONTACTS, imageForContact } from './common/constants.js';
 
 import 'react-select/dist/react-select.css';
 
 import ContactInfo from './contact.jsx';
 
-
 require('../index.scss');
+
 
 export default class PoliteBarPane extends React.Component {
     constructor(props){
@@ -170,14 +170,16 @@ export default class PoliteBarPane extends React.Component {
                 </div>
                 
                 <div className="selectPane">
+                    <div className="text-center">
+                        <img height={32} width={32} src={imageForContact(this.state.selected.contact)} />
+                    </div>
                     <Select
                             value={this.state.selected.contact}
-                            searchable={true}
                             style={{margin:5}}
-                            onChange={(contact) => this.onChange({contact: contact})}
-                            options={CONTACTS} />
+                            options={CONTACTS}
+                            onChange={(contact) => this.onChange({contact: contact})}/>
                 </div>
-                { this.state.selected.value == STATUS.CUSTOM? customInput : ""  }
+                        { this.state.selected.value == STATUS.CUSTOM? customInput : ""  }
                 <br/>
                 <p className="text-center">  {this.state.msg}</p>
 

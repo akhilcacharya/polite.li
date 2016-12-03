@@ -21,28 +21,33 @@ const STATUS_DESCRIPTIONS = [
 const CONTACTS = [
   {
     value: 'PERSON', 
-    label: '💁 In-Person',
-    emoji: '💁'
+    label: 'In-Person',
+    emoji: '💁', 
+    icon: '../assets/PERSON.png'
   },
   {
     value: 'CELL', 
-    label: '📞 Cell', 
+    label: 'Cell', 
     emoji: '📞', 
+    icon: '../assets/CELL.png'
   },
   {
     value: 'SMS',
-    label: '📱 Text',
-    emoji: '📱'
+    label: 'Text',
+    emoji: '📱', 
+    icon: '../assets/SMS.png'
   },
   {
     value: 'SLACK',
-    label: '🦃 Slack',
-    emoji: '🦃'
+    label: 'Slack',
+    emoji: '🦃', 
+    icon: '../assets/SLACK.png'
   },
   {
     value: 'EMAIL',
-    label: '📬 Email',
-    emoji: '📬'
+    label: 'Email',
+    emoji: '📬', 
+    icon: '../assets/EMAIL.png'
   },
 ];
 
@@ -51,8 +56,13 @@ const emojiForContact = (value) => {
   return result[0].emoji; 
 }; 
 
+const imageForContact = (value) => {
+  const result = CONTACTS.filter((contact) => contact.value == value)
+  if(result.length == 0) return ""; 
+  return result[0].icon; 
+}
 const INTEGRATIONS = ["Cell", "Text", "Slack"]; 
 
 //TODO: UI Constants
 
-export {STATUS, STATUS_DESCRIPTIONS, CONTACTS, INTEGRATIONS, emojiForContact}; 
+export {STATUS, STATUS_DESCRIPTIONS, CONTACTS, INTEGRATIONS, emojiForContact, imageForContact}; 
