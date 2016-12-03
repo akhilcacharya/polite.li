@@ -104,7 +104,6 @@ export default class PoliteBarPane extends React.Component {
                     <h4> Custom Status: </h4>
                     <input defaultValue={this.state.selected.custom}
                            onBlur={this.onBlurred}
-                           placeholder="Custom Status"
                            type="text"
                            className="form-control"/>
                 </div>
