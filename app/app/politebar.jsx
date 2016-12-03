@@ -144,8 +144,10 @@ export default class PoliteBarPane extends React.Component {
                    <h3> How? </h3>
                 </div>
                 
-                <div className="selectPane row">
-                    <img height={32} width={32} src={imageForContact(this.state.selected.contact)} />
+                <div className="selectPane">
+                    <div className="text-center">
+                        <img height={32} width={32} src={imageForContact(this.state.selected.contact)} />
+                    </div>
                     <Select
                             value={this.state.selected.contact}
                             style={{margin:5}}
