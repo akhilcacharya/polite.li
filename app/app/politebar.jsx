@@ -157,6 +157,7 @@ export default class PoliteBarPane extends React.Component {
                 <div className="selectPane">
                     <Select autofocus
                             value={this.state.selected.value}
+                            clearable={false}
                             noResultsText="Custom Status"
                             onChange={(status) => this.onChange({status: status})}
                             autosize={false}
@@ -176,6 +177,7 @@ export default class PoliteBarPane extends React.Component {
                     <Select
                             value={this.state.selected.contact}
                             style={{margin:5}}
+                            clearable={false}
                             options={CONTACTS}
                             onChange={(contact) => this.onChange({contact: contact})}/>
                 </div>
