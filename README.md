@@ -6,6 +6,8 @@ Advertise how to politely interrupt you (or not).
 
 *Prototype built for macOS.*
 
+More can be found here: https://kaveenherath.github.io/polite.li/
+
 # Setting up the App 
 
 ## Building from Source
@@ -24,9 +26,16 @@ Advertise how to politely interrupt you (or not).
 * Start Polite.li.app
 
 # Dependencies
+
+## App
+
 * [Electron](http://electron.atom.io/): Used to build a MacOS application that can be distributed as a .app
 
 * [React.js](https://facebook.github.io/react/): Used to build user interfaces for the application
 
 * [Photonkit](http://photonkit.com/): CSS toolkit used to bring near-native design to the app 
 
+## Backend 
+
+* Node.js: Used for backend service 
+* MongoDB: Used for persistence through the Mongoose library 
