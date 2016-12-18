@@ -19,15 +19,15 @@ defmodule BackendNew.Router do
     get "/", PageController, :index
     
     # Testing endpoints
-    get "/all/users", UserController, :getAllUsers
-    get "/all/prefs", UserController, :getAllPreferredContacts
-    get "/all/contact", UserController, :getAllContactInformation
+    get "/all/users", APIController, :getAllUsers
+    get "/all/prefs", APIController, :getAllPreferredContacts
+    get "/all/contact", APIController, :getAllContactInformation
 
     # GET Requests 
-    get "/received",  UserController, :receivedConfirmation
-    get "/api/prefs", UserController, :getPrefs
-    get "/api/self",  UserController, :getSelf
-    get "/api/friends", UserController, :getFriends
+    get "/received",  APIController, :receivedConfirmation
+    get "/api/prefs", APIController, :getPrefs
+    get "/api/self",  APIController, :getSelf
+    get "/api/friends", APIController, :getFriends
 
 
 
