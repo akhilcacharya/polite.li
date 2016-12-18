@@ -17,6 +17,20 @@ defmodule BackendNew.Router do
     pipe_through :browser # Use the default browser stack
 
     get "/", PageController, :index
+    
+    # Testing endpoints
+    get "/all/users", UserController, :getAllUsers
+    get "/all/prefs", UserController, :getAllPreferredContacts
+    get "/all/contact", UserController, :getAllContactInformation
+
+    # GET Requests 
+    get "/received",  UserController, :receivedConfirmation
+    get "/api/prefs", UserController, :getPrefs
+    get "/api/self",  UserController, :getSelf
+    get "/api/friends", UserController, :getFriends
+
+
+
   end
 
   # Other scopes may use custom stacks.

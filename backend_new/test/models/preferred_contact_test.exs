@@ -3,7 +3,7 @@ defmodule BackendNew.PreferredContactTest do
 
   alias BackendNew.PreferredContact
 
-  @valid_attrs %{contact_mean: "some content"}
+  @valid_attrs %{contact_mean: "some content", custom: "some content"}
   @invalid_attrs %{}
 
   test "changeset with valid attributes" do
