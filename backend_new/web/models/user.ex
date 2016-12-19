@@ -1,7 +1,7 @@
 defmodule BackendNew.User do
   use BackendNew.Web, :model 
 
-  @derive {Poison.Encoder, only: [:id, :username, :name, :auth_token, :github_id]}
+  @derive {Poison.Encoder, only: [:username, :name, :auth_token, :github_id]}
   schema "users" do
     field :username, :string
     field :name, :string

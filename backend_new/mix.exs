@@ -19,7 +19,7 @@ defmodule BackendNew.Mixfile do
   def application do
     [mod: {BackendNew, []},
      applications: [:phoenix, :phoenix_pubsub, :phoenix_html, :cowboy, :logger, :gettext,
-                    :phoenix_ecto, :postgrex]]
+                    :phoenix_ecto, :postgrex, :tentacat]]
   end
 
   # Specifies which paths to compile per environment.
@@ -39,6 +39,7 @@ defmodule BackendNew.Mixfile do
      {:gettext, "~> 0.11"},
      {:poison, "~> 1.5"}, 
      {:httpotion, "~> 3.0.0"}, 
+     {:tentacat, "~> 0.5"},
      {:cowboy, "~> 1.0"}]
   end
 

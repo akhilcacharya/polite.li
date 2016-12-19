@@ -1,6 +1,7 @@
 defmodule BackendNew.ContactState do
   use BackendNew.Web, :model
 
+  @derive {Poison.Encoder, only: [:contact_custom, :contact_state]}
   schema "contact_state" do
     field :contact_state, :string
     field :contact_custom, :string

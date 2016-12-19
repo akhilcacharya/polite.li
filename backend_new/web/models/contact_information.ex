@@ -1,7 +1,7 @@
 defmodule BackendNew.ContactInformation do
   use BackendNew.Web, :model
 
-  @derive {Poison.Encoder, only: [:id, :contact_mean, :contact_value, :user_id]}
+  @derive {Poison.Encoder, only: [:contact_mean, :contact_value]}
   schema "contact_information" do
     field :contact_mean, :string
     field :contact_value, :string
