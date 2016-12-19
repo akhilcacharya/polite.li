@@ -29,6 +29,17 @@ BackendNew.Repo.insert!(
 )
 
 BackendNew.Repo.insert!(
+    %BackendNew.User{
+        id: 2, 
+        username: "BarackObama", 
+        name: "Barack Obama", 
+        auth_token: "3456", 
+        github_id: "78910"
+    }
+)
+
+
+BackendNew.Repo.insert!(
     %BackendNew.ContactInformation{
         contact_mean: "SLACK", 
         contact_value: "akhilcacharya", 
@@ -54,9 +65,35 @@ BackendNew.Repo.insert!(
 
 BackendNew.Repo.insert!(
     %BackendNew.PreferredContact{
-        contact_mean: "CUSTOM",
-        custom: "Busy until 11",  
+        contact_mean: "PHONE",
         user_id: 1, 
     }
 )
 
+BackendNew.Repo.insert!(
+    %BackendNew.PreferredContact{
+        contact_mean: "SMS",
+        user_id: 2, 
+    }
+)
+
+BackendNew.Repo.insert!(
+    %BackendNew.ContactState{
+        contact_state: "DND",
+        user_id: 1, 
+    }
+)
+
+BackendNew.Repo.insert!(
+    %BackendNew.ContactState{
+        contact_state: "DND",
+        user_id: 1, 
+    }
+)
+
+BackendNew.Repo.insert!(
+    %BackendNew.ContactState{
+        contact_state: "BUSY",
+        user_id: 2, 
+    }
+)
