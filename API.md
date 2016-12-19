@@ -1,23 +1,33 @@
 # Schema 
 
 
-``
+```
+
 const UserSchema = mongoose.Schema({
+    
     id: Number,
+    
     username: String,
+    
     name: String,
+    
     auth_token: String,
+    
     avatar: String,
+    
     state: {                //Separate table?
         value: String,
         custom: String,
         contact: String,
     },
+    
     prefs: {                //Separate table?
         integration: [],
     },
 });
-``
+
+
+```
 
 # Web Docs 
 
@@ -43,7 +53,7 @@ Sends back a 200 for confirmation
 
 ``/api/prefs``
 
-Get the current prefs for a particular token. 
+Get the current prefs for a particular token. *IGNORE FOR THE MOMENT*
 
 ``/api/self`` 
 
