@@ -79,9 +79,28 @@ defmodule BackendNew.APIController do
     json conn, result
   end
 
-  def get_friends(conn, %{"auth" => auth}) do  
-      client = Tentacat.Client.new(%{access_token: auth})
-      me = Tentacat.Users.me(client)
-      json conn, %{friends: "Friends"}
+  def get_friends(conn, _param) do  
+    if !Map.has_key?(_param, "auth") do
+        json conn, %{
+            message: "Error: No token"
+        }
+    end
+      
+    auth = _param["auth"]
+
+    # Top level user
+    if !has_user(auth) do
+        json conn, %{
+            message: "Error: No user by token"
+        }
+    end    
+
+    client = Tentacat.Client.new(%{access_token: auth})
+    #me = Tentacat.Users.me(client)
+
+    client |> Tentacat.Users.Followers.following |> IO.inspect
+
+
+    json conn, %{friends: "Friends"}
   end 
 end
