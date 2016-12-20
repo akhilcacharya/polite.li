@@ -1,9 +1,10 @@
 defmodule BackendNew.PreferredContact do
   use BackendNew.Web, :model
 
-  @derive {Poison.Encoder, only: [:contact_mean]}
+  @derive {Poison.Encoder, only: [:contact_mean, :contact_value]}
   schema "preferred_contact" do
     field :contact_mean, :string
+    field :contact_value, :string
     belongs_to :user, BackendNew.User
 
     timestamps()

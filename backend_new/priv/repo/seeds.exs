@@ -66,6 +66,7 @@ BackendNew.Repo.insert!(
 BackendNew.Repo.insert!(
     %BackendNew.PreferredContact{
         contact_mean: "PHONE",
+        contact_value: "9197201133", 
         user_id: 1, 
     }
 )
@@ -73,6 +74,7 @@ BackendNew.Repo.insert!(
 BackendNew.Repo.insert!(
     %BackendNew.PreferredContact{
         contact_mean: "SMS",
+        contact_value: "9197201133", 
         user_id: 2, 
     }
 )

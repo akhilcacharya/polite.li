@@ -22,10 +22,10 @@ defmodule BackendNew.Router do
     get "/all/users", APIController, :getAllUsers
     get "/all/prefs", APIController, :getAllPreferredContacts
     get "/all/contact", APIController, :getAllContactInformation
+    get "/all/state", APIController, :getAllContactStates
 
     # GET Requests 
     get "/received",  APIController, :receivedConfirmation
-    get "/api/prefs", APIController, :getPrefs
     get "/api/self",  APIController, :getSelf
     get "/api/friends", APIController, :getFriends
 
